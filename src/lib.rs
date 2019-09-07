@@ -1,34 +1,45 @@
 pub struct Solution;
 
 impl Solution {
-    pub fn find_occurrence(text: String, first: String, second: String) -> Vec<String> {
-        let words: Vec<_> = text.split(' ').collect();
-        let mut result = vec![];
-
-        for i in 0..words.len() - 2 {
-            if words[i] == first && words[i + 1] == second {
-                result.push(words[i + 2].to_string());
+    pub fn find_longest_word(s: String, d: Vec<String>) -> String {
+        let mut result = "".to_string();
+        for word in d {
+            if Solution::in_word(&s, &word) {
+                if word.len() > result.len() || word.len() == result.len() && word < result {
+                    result = word;
+                }
             }
         }
         result
     }
+
+    fn in_word(src: &str, word: &str) -> bool {
+        let src = src.as_bytes();
+        let word = word.as_bytes();
+        let mut src_idx = 0usize;
+        let mut word_idx = 0usize;
+
+        while src_idx < src.len() && word_idx < word.len() {
+            if word[word_idx] == src[src_idx] {
+                word_idx += 1;
+            }
+            src_idx += 1;
+        }
+        word_idx == word.len()
+    }
 }
 
 #[test]
-fn test_find_occurrence() {
+pub fn test_find_longest_word() {
     let cases = vec![
-        (
-            "alice is a good girl she is a good student",
-            "a",
-            "good",
-            vec!["girl", "student"],
-        ),
-        ("we will we will rock you", "we", "will", vec!["we", "rock"]),
+        ("abpcplea", vec!["ale", "apple", "monkey", "plea"], "apple"),
+        ("abpcplea", vec!["a", "b", "c"], "a"),
     ];
-    for case in cases {
-        let result =
-            Solution::find_occurrence(case.0.to_string(), case.1.to_string(), case.2.to_string());
-        let expect: Vec<_> = case.3.into_iter().map(|s| s.to_string()).collect();
-        assert_eq!(result, expect);
+
+    for (string, dict, expected) in cases {
+        let string = string.to_string();
+        let dict: Vec<_> = dict.into_iter().map(|s| s.to_string()).collect();
+        let result = Solution::find_longest_word(string, dict);
+        assert_eq!(result, expected.to_string());
     }
 }
