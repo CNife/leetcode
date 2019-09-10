@@ -1,25 +1,47 @@
 pub struct Solution;
 
-use std::cmp::{max, min};
-
 impl Solution {
-    pub fn max_area(height: Vec<i32>) -> i32 {
-        let mut i = 0;
-        let mut j = height.len() - 1;
-        let mut res = 0;
-        while i < j {
-            res = max(res, min(height[i], height[j]) * (j - i) as i32);
-            if height[i] < height[j] {
-                i += 1;
-            } else {
-                j -= 1;
+    pub fn set_zeroes(matrix: &mut Vec<Vec<i32>>) {
+        let mut rows = vec![];
+        let mut columns = vec![];
+
+        for (r, row) in matrix.iter().enumerate() {
+            for (c, elem) in row.into_iter().enumerate() {
+                if *elem == 0 {
+                    rows.push(r);
+                    columns.push(c);
+                }
             }
         }
-        res
+
+        for r in rows {
+            for elem in matrix[r].iter_mut() {
+                *elem = 0;
+            }
+        }
+
+        for c in columns {
+            for r in 0..matrix.len() {
+                matrix[r][c] = 0;
+            }
+        }
     }
 }
 
 #[test]
-fn test_max_area() {
-    assert_eq!(Solution::max_area(vec![1, 8, 6, 2, 5, 4, 8, 3, 7]), 49);
+fn test_set_zeroes() {
+    let cases = vec![
+        (
+            vec![vec![1, 1, 1], vec![1, 0, 1], vec![1, 1, 1]],
+            vec![vec![1, 0, 1], vec![0, 0, 0], vec![1, 0, 1]],
+        ),
+        (
+            vec![vec![0, 1, 2, 0], vec![3, 4, 5, 2], vec![1, 3, 1, 5]],
+            vec![vec![0, 0, 0, 0], vec![0, 4, 5, 0], vec![0, 3, 1, 0]],
+        ),
+    ];
+    for (mut matrix, expected) in cases {
+        Solution::set_zeroes(&mut matrix);
+        assert_eq!(matrix, expected);
+    }
 }
