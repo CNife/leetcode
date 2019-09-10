@@ -1,20 +1,37 @@
 pub struct Solution;
 
 impl Solution {
-    pub fn range_bitwise_and(m: i32, n: i32) -> i32 {
-        for i in 0..32 {
-            if (m >> i) == (n >> i) {
-                return m & (-1 << i);
+    pub fn str_without3a3b(mut a: i32, mut b: i32) -> String {
+        let mut res = Vec::with_capacity((a + b) as usize);
+        let mut i = 0;
+        while a > 0 || b > 0 {
+            let write_a = if i >= 2 && res[i - 1] == res[i - 2] {
+                res[i - 1] == 'b' as u8
+            } else {
+                a > b
+            };
+            if write_a {
+                a -= 1;
+                res.push('a' as u8);
+            } else {
+                b -= 1;
+                res.push('b' as u8);
             }
+            i += 1;
         }
-        unreachable!();
+        unsafe { String::from_utf8_unchecked(res) }
     }
 }
 
 #[test]
-fn test_range_bitwise_and() {
-    let cases = vec![(5, 7, 4), (0, 1, 0)];
-    for (m, n, expected) in cases {
-        assert_eq!(Solution::range_bitwise_and(m, n), expected);
+fn test_str_without_3a3b() {
+    let inputs = vec![(1, 2), (4, 1), (6, 2)];
+    for (a, b) in inputs {
+        let result = Solution::str_without3a3b(a, b);
+        assert_eq!(result.len(), (a + b) as usize);
+        assert_eq!(result.chars().filter(|&c| c == 'a').count(), a as usize);
+        assert_eq!(result.chars().filter(|&c| c == 'b').count(), b as usize);
+        assert_eq!(result.find("aaa"), None);
+        assert_eq!(result.find("bbb"), None);
     }
 }
