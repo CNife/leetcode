@@ -1,37 +1,66 @@
-pub struct Solution;
+#[derive(Default)]
+pub struct WordDictionary {
+    root: TrieNode,
+}
 
-impl Solution {
-    pub fn str_without3a3b(mut a: i32, mut b: i32) -> String {
-        let mut res = Vec::with_capacity((a + b) as usize);
-        let mut i = 0;
-        while a > 0 || b > 0 {
-            let write_a = if i >= 2 && res[i - 1] == res[i - 2] {
-                res[i - 1] == 'b' as u8
-            } else {
-                a > b
-            };
-            if write_a {
-                a -= 1;
-                res.push('a' as u8);
-            } else {
-                b -= 1;
-                res.push('b' as u8);
-            }
-            i += 1;
+impl WordDictionary {
+    pub fn new() -> Self {
+        Default::default()
+    }
+
+    pub fn add_word(&mut self, word: String) {
+        let mut node = &mut self.root;
+        for c in word.as_bytes() {
+            let index = (c - b'a') as usize;
+            node = node.table[index].get_or_insert_with(Default::default);
         }
-        unsafe { String::from_utf8_unchecked(res) }
+        node.is_end = true;
+    }
+
+    pub fn search(&self, pattern: String) -> bool {
+        WordDictionary::match_char(&self.root, pattern.as_bytes())
+    }
+
+    fn match_char(node: &TrieNode, pattern: &[u8]) -> bool {
+        match pattern.first() {
+            None => node.is_end,
+            Some(&DOT) => node.table.iter().any(|child| {
+                child
+                    .as_ref()
+                    .map(|next| WordDictionary::match_char(next, &pattern[1..]))
+                    .unwrap_or(false)
+            }),
+            Some(&c) => node.table[(c - b'a') as usize]
+                .as_ref()
+                .map(|next| WordDictionary::match_char(next, &pattern[1..]))
+                .unwrap_or(false),
+        }
     }
 }
 
+#[derive(Default)]
+struct TrieNode {
+    table: [Option<Box<TrieNode>>; 26],
+    is_end: bool,
+}
+
+const DOT: u8 = b'.';
+
 #[test]
-fn test_str_without_3a3b() {
-    let inputs = vec![(1, 2), (4, 1), (6, 2)];
-    for (a, b) in inputs {
-        let result = Solution::str_without3a3b(a, b);
-        assert_eq!(result.len(), (a + b) as usize);
-        assert_eq!(result.chars().filter(|&c| c == 'a').count(), a as usize);
-        assert_eq!(result.chars().filter(|&c| c == 'b').count(), b as usize);
-        assert_eq!(result.find("aaa"), None);
-        assert_eq!(result.find("bbb"), None);
+fn test_trie_node_size() {
+    assert_eq!(std::mem::size_of::<TrieNode>(), std::usize::MAX);
+}
+
+#[test]
+fn test_word_dictionary() {
+    let words = vec!["bad", "dad", "mad"];
+    let cases = vec![("pad", false), ("bad", true), (".ad", true), ("b..", true)];
+
+    let mut wd = WordDictionary::new();
+    for word in words {
+        wd.add_word(word.to_string());
+    }
+    for (pattern, expected) in cases {
+        assert_eq!(wd.search(pattern.to_string()), expected);
     }
 }
