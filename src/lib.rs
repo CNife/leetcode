@@ -1,76 +1,81 @@
 pub struct Solution;
 
 impl Solution {
-    pub fn day_of_the_week(day: i32, month: i32, year: i32) -> String {
-        let days_in_month = if Solution::is_leap_year(year) {
-            LEAP_YEAR_MONTHS[month as usize]
-        } else {
-            NON_LEAP_YEAR_MONTHS[month as usize]
-        };
-        let days_in_year: i32 = (1970..year)
-            .map(|y| if Solution::is_leap_year(y) { 366 } else { 365 })
-            .sum();
-        let days = day + days_in_month + days_in_year;
-        DAY_IN_WEEK[(days % 7) as usize].to_string()
-    }
+    pub fn spiral_order(matrix: Vec<Vec<i32>>) -> Vec<i32> {
+        let mut result = Vec::new();
+        if matrix.is_empty() {
+            return result;
+        }
 
-    #[inline]
-    fn is_leap_year(year: i32) -> bool {
-        (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)
+        let mut row_start = 0;
+        let mut row_end = matrix.len();
+        let mut column_start = 0;
+        let mut column_end = matrix[0].len();
+        while row_end - row_start >= 2 && column_end - column_start >= 2 {
+            for c in column_start..column_end {
+                result.push(matrix[row_start][c]);
+            }
+            for r in row_start + 1..row_end - 1 {
+                result.push(matrix[r][column_end - 1]);
+            }
+            for c in (column_start..column_end).rev() {
+                result.push(matrix[row_end - 1][c]);
+            }
+            for r in (row_start + 1..row_end - 1).rev() {
+                result.push(matrix[r][column_start]);
+            }
+
+            row_start += 1;
+            row_end -= 1;
+            column_start += 1;
+            column_end -= 1;
+        }
+
+        if row_end - row_start == 1 {
+            for c in column_start..column_end {
+                result.push(matrix[row_start][c]);
+            }
+        } else if column_end - column_start == 1 {
+            for r in row_start..row_end {
+                result.push(matrix[r][column_start]);
+            }
+        }
+
+        result
     }
 }
 
-const LEAP_YEAR_MONTHS: [i32; 13] = [
-    std::i32::MIN, // for padding
-    0,
-    31,
-    60,
-    91,
-    121,
-    152,
-    182,
-    213,
-    244,
-    274,
-    305,
-    335,
-];
-
-const NON_LEAP_YEAR_MONTHS: [i32; 13] = [
-    std::i32::MIN, // for padding
-    0,
-    31,
-    59,
-    90,
-    120,
-    151,
-    181,
-    212,
-    243,
-    273,
-    304,
-    334,
-];
-
-const DAY_IN_WEEK: [&str; 7] = [
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-    "Monday",
-    "Tuesday",
-];
-
 #[test]
-fn test_day_of_the_week() {
+fn test_spiral_order() {
     let cases = vec![
-        (31, 8, 2019, "Saturday"),
-        (18, 7, 1999, "Sunday"),
-        (15, 8, 1993, "Sunday"),
+        (
+            vec![vec![1, 2, 3], vec![4, 5, 6], vec![7, 8, 9]],
+            vec![1, 2, 3, 6, 9, 8, 7, 4, 5],
+        ),
+        (
+            vec![vec![1, 2, 3, 4], vec![5, 6, 7, 8], vec![9, 10, 11, 12]],
+            vec![1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7],
+        ),
+        (vec![vec![3], vec![2]], vec![3, 2]),
+        (
+            vec![
+                vec![1, 11],
+                vec![2, 12],
+                vec![3, 13],
+                vec![4, 14],
+                vec![5, 15],
+                vec![6, 16],
+                vec![7, 17],
+                vec![8, 18],
+                vec![9, 19],
+                vec![10, 20],
+            ],
+            vec![
+                1, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 10, 9, 8, 7, 6, 5, 4, 3, 2,
+            ],
+        ),
     ];
-    for (day, month, year, expected) in cases {
-        let output = Solution::day_of_the_week(day, month, year);
-        assert_eq!(output, expected.to_string());
+    for (input, expected) in cases {
+        assert_eq!(Solution::spiral_order(input), expected);
     }
 }
