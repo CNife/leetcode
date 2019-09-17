@@ -1,25 +1,33 @@
-use std::collections::HashMap;
-
 pub struct Solution;
 
 impl Solution {
-    pub fn next_greater_element(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {
-        let map: HashMap<i32, usize> = nums2.iter().enumerate().map(|(i, n)| (*n, i)).collect();
-        nums1
-            .into_iter()
-            .map(|n1| *nums2[map[&n1]..].iter().find(|n2| **n2 > n1).unwrap_or(&-1))
-            .collect()
+    pub fn next_greater_element(n: i32) -> i32 {
+        let mut digits = n.to_string().into_bytes();
+        let (i, ei) = match digits
+            .iter()
+            .enumerate()
+            .zip(digits[1..].iter())
+            .rfind(|((_, el), er)| el < er)
+        {
+            Some((res, _)) => res,
+            None => return -1,
+        };
+        let (j, _) = digits.iter().enumerate().rfind(|&(_, ej)| ej > ei).unwrap();
+        digits.swap(i, j);
+        digits[i + 1..].reverse();
+        unsafe {
+            String::from_utf8_unchecked(digits)
+                .parse::<i32>()
+                .unwrap_or(-1)
+        }
     }
 }
 
 #[test]
 fn test_next_greater_element() {
-    let cases = vec![
-        (vec![4, 1, 2], vec![1, 3, 4, 2], vec![-1, 3, -1]),
-        (vec![2, 4], vec![1, 2, 3, 4], vec![3, -1]),
-    ];
-    for (nums1, nums2, expected) in cases {
-        let output = Solution::next_greater_element(nums1, nums2);
+    let cases = vec![(12, 21), (21, -1)];
+    for (n, expected) in cases {
+        let output = Solution::next_greater_element(n);
         assert_eq!(output, expected);
     }
 }
