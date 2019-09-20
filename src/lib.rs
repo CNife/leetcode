@@ -1,55 +1,32 @@
 pub struct Solution;
 
 impl Solution {
-    pub fn generate_matrix(n: i32) -> Vec<Vec<i32>> {
-        let n = n as usize;
-        let mut matrix = Solution::init_matrix(n);
-
-        let mut counter = 0i32;
-        let mut next = || {
-            counter += 1;
-            counter
-        };
-
-        let mut i = 0;
-        let mut j = n - 1;
-        while i < j {
-            for c in i..j {
-                matrix[i][c] = next();
+    pub fn gray_code(n: i32) -> Vec<i32> {
+        let mut res = Vec::with_capacity(2i32.pow(n as u32) as usize);
+        res.push(0);
+        let mut head = 1;
+        for _ in 0..n as usize {
+            for j in (0..res.len()).rev() {
+                res.push(head + res[j]);
             }
-            for r in i..j {
-                matrix[r][j] = next();
-            }
-            for c in (i + 1..j + 1).rev() {
-                matrix[j][c] = next();
-            }
-            for r in (i + 1..j + 1).rev() {
-                matrix[r][i] = next();
-            }
-            i += 1;
-            j -= 1;
+            head <<= 1;
         }
-        if i == j {
-            matrix[i][i] = next();
-        }
-        matrix
-    }
-
-    fn init_matrix(n: usize) -> Vec<Vec<i32>> {
-        let mut matrix = Vec::with_capacity(n);
-        for _ in 0..n {
-            let mut row = Vec::with_capacity(n);
-            row.resize(n, 0);
-            matrix.push(row);
-        }
-        matrix
+        res
     }
 }
 
 #[test]
-fn test_generate_matrix() {
-    let cases = vec![(3, vec![vec![1, 2, 3], vec![8, 9, 4], vec![7, 6, 5]])];
-    for (n, expected) in cases {
-        assert_eq!(Solution::generate_matrix(n), expected);
+fn test_gray_code() {
+    let is_gray_code = |vec: Vec<i32>| {
+        vec[0] == 0
+            && (0..vec.len() - 1).all(|i| {
+                let diff = vec[i] ^ vec[i + 1];
+                diff.count_ones() == 1
+            })
+    };
+
+    let inputs = vec![0, 3, 10];
+    for n in inputs {
+        assert!(is_gray_code(Solution::gray_code(n)));
     }
 }
