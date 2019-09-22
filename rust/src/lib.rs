@@ -1,32 +1,69 @@
 pub struct Solution;
 
 impl Solution {
-    pub fn gray_code(n: i32) -> Vec<i32> {
-        let mut res = Vec::with_capacity(2i32.pow(n as u32) as usize);
-        res.push(0);
-        let mut head = 1;
-        for _ in 0..n as usize {
-            for j in (0..res.len()).rev() {
-                res.push(head + res[j]);
+    pub fn game_of_life(board: &mut Vec<Vec<i32>>) {
+        let rows = board.len();
+        let columns = board[0].len();
+
+        for r in 0..rows {
+            for c in 0..columns {
+                let count = Solution::count(&board, rows, columns, r, c);
+                board[r][c] = LIVE_TABLE[board[r][c] as usize][count as usize];
             }
-            head <<= 1;
         }
-        res
+
+        for r in 0..rows {
+            for c in 0..columns {
+                board[r][c] = match board[r][c] {
+                    MARKED_ONE => 0,
+                    MARKED_ZERO => 1,
+                    n => n,
+                };
+            }
+        }
+    }
+
+    fn count(board: &[Vec<i32>], rows: usize, columns: usize, r: usize, c: usize) -> i32 {
+        let left = c.wrapping_sub(1);
+        let right = c + 1;
+        let up = r.wrapping_sub(1);
+        let down = r + 1;
+
+        let cal = |row: usize, column: usize| -> i32 {
+            if row < rows && column < columns {
+                board[row][column] & 1
+            } else {
+                0
+            }
+        };
+
+        cal(up, left)
+            + cal(up, c)
+            + cal(up, right)
+            + cal(r, left)
+            + cal(r, right)
+            + cal(down, left)
+            + cal(down, c)
+            + cal(down, right)
     }
 }
 
-#[test]
-fn test_gray_code() {
-    let is_gray_code = |vec: Vec<i32>| {
-        vec[0] == 0
-            && (0..vec.len() - 1).all(|i| {
-                let diff = vec[i] ^ vec[i + 1];
-                diff.count_ones() == 1
-            })
-    };
+// 0x8000000
+const MARKED_ZERO: i32 = std::i32::MIN;
+// 0x8000001
+const MARKED_ONE: i32 = std::i32::MIN + 1;
 
-    let inputs = vec![0, 3, 10];
-    for n in inputs {
-        assert!(is_gray_code(Solution::gray_code(n)));
-    }
+const LIVE_TABLE: [[i32; 9]; 2] = [
+    [0, 0, 0, MARKED_ZERO, 0, 0, 0, 0, 0],
+    [
+        MARKED_ONE, MARKED_ONE, 1, 1, MARKED_ONE, MARKED_ONE, MARKED_ONE, MARKED_ONE, MARKED_ONE,
+    ],
+];
+
+#[test]
+fn test_game_of_line() {
+    let mut input = vec![vec![0, 1, 0], vec![0, 0, 1], vec![1, 1, 1], vec![0, 0, 0]];
+    let expected = vec![vec![0, 0, 0], vec![1, 0, 1], vec![0, 1, 1], vec![0, 1, 0]];
+    Solution::game_of_life(&mut input);
+    assert_eq!(input, expected);
 }
