@@ -1,48 +1,55 @@
-pub struct Solution;
+#[derive(Default)]
+pub struct Trie {
+    root: Node,
+}
 
-impl Solution {
-    pub fn letter_combinations(digits: String) -> Vec<String> {
-        let mut res = Vec::new();
-        Solution::do_combination(digits.as_bytes(), String::new(), &mut res);
-        res
+#[derive(Default)]
+struct Node {
+    children: [Option<Box<Node>>; 26],
+    is_word: bool,
+}
+
+impl Trie {
+    pub fn new() -> Self {
+        Self::default()
+    }
+    pub fn insert(&mut self, word: String) {
+        let mut node = &mut self.root;
+        for c in word.as_bytes() {
+            let idx = (c - b'a') as usize;
+            let next = &mut node.children[idx];
+            node = next.get_or_insert_with(Box::<Node>::default);
+        }
+        node.is_word = true;
     }
 
-    fn do_combination(digits: &[u8], string: String, res: &mut Vec<String>) {
-        match digits.get(0) {
-            Some(l) => {
-                let idx = *l - b'0';
-                for next_letter in LETTER_TABLE[idx as usize].chars() {
-                    let mut cloned_string = string.clone();
-                    cloned_string.push(next_letter);
-                    Solution::do_combination(&digits[1..], cloned_string, res);
-                }
-            }
-            None => {
-                if !string.is_empty() {
-                    res.push(string);
-                }
+    pub fn search(&self, word: String) -> bool {
+        self.get_node(&word).map_or(false, |w| w.is_word)
+    }
+    pub fn starts_with(&self, prefix: String) -> bool {
+        self.get_node(&prefix).is_some()
+    }
+
+    fn get_node(&self, s: &str) -> Option<&Node> {
+        let mut node = &self.root;
+        for c in s.as_bytes() {
+            let idx = (c - b'a') as usize;
+            match &node.children[idx] {
+                Some(next) => node = next.as_ref(),
+                None => return None,
             }
         }
+        Some(node)
     }
 }
 
-const LETTER_TABLE: [&str; 10] = [
-    "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz",
-];
-
 #[test]
-fn test_letter_combinations() {
-    use std::collections::HashSet;
-
-    let input = "23".to_string();
-    let expected = vec!["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
-        .into_iter()
-        .map(|s| s.to_string())
-        .collect::<HashSet<_>>();
-    assert_eq!(
-        Solution::letter_combinations(input)
-            .into_iter()
-            .collect::<HashSet<_>>(),
-        expected
-    );
+fn test_trie() {
+    let mut t = Trie::new();
+    t.insert("apple".to_string());
+    assert_eq!(t.search("apple".to_string()), true);
+    assert_eq!(t.search("app".to_string()), false);
+    assert_eq!(t.starts_with("app".to_string()), true);
+    t.insert("app".to_string());
+    assert_eq!(t.search("app".to_string()), true);
 }
