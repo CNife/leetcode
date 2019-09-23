@@ -1,69 +1,48 @@
 pub struct Solution;
 
 impl Solution {
-    pub fn game_of_life(board: &mut Vec<Vec<i32>>) {
-        let rows = board.len();
-        let columns = board[0].len();
-
-        for r in 0..rows {
-            for c in 0..columns {
-                let count = Solution::count(&board, rows, columns, r, c);
-                board[r][c] = LIVE_TABLE[board[r][c] as usize][count as usize];
-            }
-        }
-
-        for r in 0..rows {
-            for c in 0..columns {
-                board[r][c] = match board[r][c] {
-                    MARKED_ONE => 0,
-                    MARKED_ZERO => 1,
-                    n => n,
-                };
-            }
-        }
+    pub fn letter_combinations(digits: String) -> Vec<String> {
+        let mut res = Vec::new();
+        Solution::do_combination(digits.as_bytes(), String::new(), &mut res);
+        res
     }
 
-    fn count(board: &[Vec<i32>], rows: usize, columns: usize, r: usize, c: usize) -> i32 {
-        let left = c.wrapping_sub(1);
-        let right = c + 1;
-        let up = r.wrapping_sub(1);
-        let down = r + 1;
-
-        let cal = |row: usize, column: usize| -> i32 {
-            if row < rows && column < columns {
-                board[row][column] & 1
-            } else {
-                0
+    fn do_combination(digits: &[u8], string: String, res: &mut Vec<String>) {
+        match digits.get(0) {
+            Some(l) => {
+                let idx = *l - b'0';
+                for next_letter in LETTER_TABLE[idx as usize].chars() {
+                    let mut cloned_string = string.clone();
+                    cloned_string.push(next_letter);
+                    Solution::do_combination(&digits[1..], cloned_string, res);
+                }
             }
-        };
-
-        cal(up, left)
-            + cal(up, c)
-            + cal(up, right)
-            + cal(r, left)
-            + cal(r, right)
-            + cal(down, left)
-            + cal(down, c)
-            + cal(down, right)
+            None => {
+                if !string.is_empty() {
+                    res.push(string);
+                }
+            }
+        }
     }
 }
 
-// 0x8000000
-const MARKED_ZERO: i32 = std::i32::MIN;
-// 0x8000001
-const MARKED_ONE: i32 = std::i32::MIN + 1;
-
-const LIVE_TABLE: [[i32; 9]; 2] = [
-    [0, 0, 0, MARKED_ZERO, 0, 0, 0, 0, 0],
-    [
-        MARKED_ONE, MARKED_ONE, 1, 1, MARKED_ONE, MARKED_ONE, MARKED_ONE, MARKED_ONE, MARKED_ONE,
-    ],
+const LETTER_TABLE: [&str; 10] = [
+    "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz",
 ];
 
 #[test]
-fn test_game_of_line() {
-    let mut input = vec![vec![0, 1, 0], vec![0, 0, 1], vec![1, 1, 1], vec![0, 0, 0]];
-    let expected = vec![vec![0, 0, 0], vec![1, 0, 1], vec![0, 1, 1], vec![0, 1, 0]];
-    Solution::game_of_life(&mut input);
-    assert_eq!(input, expected);
+fn test_letter_combinations() {
+    use std::collections::HashSet;
+
+    let input = "23".to_string();
+    let expected = vec!["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
+        .into_iter()
+        .map(|s| s.to_string())
+        .collect::<HashSet<_>>();
+    assert_eq!(
+        Solution::letter_combinations(input)
+            .into_iter()
+            .collect::<HashSet<_>>(),
+        expected
+    );
 }
