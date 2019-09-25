@@ -2,4 +2,5 @@
 */.vscode/
 */out/
 */target/
+*/cmake-build-*/
 *.iml
