@@ -8,7 +8,7 @@ class ListNode {
     ListNode next;
 
     @Contract(pure = true)
-    private ListNode(int val) {
+    ListNode(int val) {
         this.val = val;
     }
 
@@ -27,17 +27,17 @@ class ListNode {
         return head;
     }
 
+    @Contract(value = "null -> false", pure = true)
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ListNode)) return false;
         ListNode listNode = (ListNode) o;
-        return val == listNode.val &&
-                Objects.equals(next, listNode.next);
+        return val == listNode.val;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(val, next);
+        return Objects.hash(val);
     }
 }
