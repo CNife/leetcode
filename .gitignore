@@ -3,4 +3,8 @@
 */out/
 */target/
 */cmake-build-*/
+*.pyc
 *.iml
+
+rust/src/lib.rs
+rust/src/main.rs
