@@ -6,5 +6,8 @@
 *.pyc
 *.iml
 
-rust/src/lib.rs
-rust/src/main.rs
+/rust/src/lib.rs
+/rust/src/main.rs
+/rust/Cargo.lock
+
+/c/main.c
