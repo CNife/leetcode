@@ -1,3 +1,1 @@
-pub mod three_sum;
-
-mod collection;
+pub mod intersection_of_three_sorted_arrays;
