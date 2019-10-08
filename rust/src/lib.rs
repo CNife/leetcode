@@ -1,1 +1,1 @@
-pub mod intersection_of_three_sorted_arrays;
+pub mod smallest_range_i;
