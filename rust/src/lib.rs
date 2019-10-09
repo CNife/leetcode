@@ -1,1 +1,1 @@
-pub mod smallest_range_i;
+pub mod unique_number_of_occurrences;
