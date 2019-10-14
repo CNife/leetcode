@@ -1,1 +1,1 @@
-pub mod available_captures_for_rook;
+pub mod prime_number_of_set_bits_in_binary_representation;
