@@ -1,1 +1,1 @@
-pub mod subdomain_visit_count;
+pub mod split_a_string_in_balanced_strings;
