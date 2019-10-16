@@ -1,1 +1,1 @@
-pub mod remove_all_adjacent_duplicates_in_string;
+pub mod number_of_lines_to_write_string;
