@@ -1,1 +1,1 @@
-pub mod island_perimeter;
+pub mod remove_all_adjacent_duplicates_in_string;
