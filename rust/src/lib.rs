@@ -1,1 +1,1 @@
-pub mod number_of_lines_to_write_string;
+pub mod groups_of_special_equivalent_strings;
