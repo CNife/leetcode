@@ -1,1 +1,1 @@
-pub mod distribute_candies_to_people;
+pub mod binary_number_with_alternating_bits;
