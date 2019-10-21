@@ -1,1 +1,1 @@
-pub mod binary_gap;
+pub mod uncommon_words_from_two_sentences;
