@@ -1,1 +1,1 @@
-pub mod letter_case_permutation;
+pub mod binary_gap;
