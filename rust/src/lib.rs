@@ -1,1 +1,1 @@
-pub mod largest_triangle_area;
+pub mod last_stone_weight;
