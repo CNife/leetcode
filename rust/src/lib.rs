@@ -1,1 +1,1 @@
-pub mod rotated_digits;
+pub mod bulls_and_cows;
