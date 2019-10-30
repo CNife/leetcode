@@ -1,1 +1,1 @@
-pub mod bulls_and_cows;
+pub mod binary_watch;
