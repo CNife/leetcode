@@ -1,1 +1,1 @@
-pub mod number_of_segments_in_a_string;
+pub mod arranging_coins;
