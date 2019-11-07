@@ -1,1 +1,1 @@
-pub mod number_of_boomerangs;
+pub mod longest_palindromic_substring;
