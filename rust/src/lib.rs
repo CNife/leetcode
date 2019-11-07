@@ -1,1 +1,1 @@
-pub mod string_compression;
+pub mod number_of_boomerangs;
