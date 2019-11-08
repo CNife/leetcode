@@ -1,1 +1,1 @@
-pub mod longest_palindromic_substring;
+pub mod minimum_moves_to_equal_array_elements;
