@@ -1,1 +1,1 @@
-pub mod minimum_moves_to_equal_array_elements;
+pub mod repeated_substring_pattern;
