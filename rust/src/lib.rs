@@ -1,1 +1,1 @@
-pub mod letter_tile_possibilities;
+pub mod n_queens;
