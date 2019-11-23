@@ -1,1 +1,1 @@
-pub mod minimum_path_sum;
+pub mod palindromic_substrings;
