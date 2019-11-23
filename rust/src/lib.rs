@@ -1,1 +1,1 @@
-pub mod unique_binary_search_trees;
+pub mod minimum_path_sum;
