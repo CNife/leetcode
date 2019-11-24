@@ -1,1 +1,1 @@
-pub mod burst_balloons;
+pub mod group_anagrams;
