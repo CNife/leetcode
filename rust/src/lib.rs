@@ -1,1 +1,1 @@
-pub mod group_anagrams;
+pub mod edit_distance;
