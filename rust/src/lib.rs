@@ -1,4 +1,4 @@
-pub mod evaluate_division;
+pub mod perfect_squares;
 
 pub mod utils {
     use std::collections::HashSet;
