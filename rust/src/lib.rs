@@ -1,4 +1,4 @@
-pub mod best_time_to_buy_and_sell_stock_with_cooldown;
+pub mod course_schedule;
 
 pub mod utils {
     use std::collections::HashSet;
