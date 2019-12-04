@@ -1,4 +1,4 @@
-pub mod course_schedule;
+pub mod next_permutation;
 
 pub mod utils {
     use std::collections::HashSet;
