@@ -1,4 +1,4 @@
-pub mod next_permutation;
+pub mod decode_string;
 
 pub mod utils {
     use std::collections::HashSet;
