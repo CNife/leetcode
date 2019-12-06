@@ -1,4 +1,4 @@
-pub mod palindrome_partitioning;
+pub mod valid_sudoku;
 
 pub mod utils {
     use std::collections::HashSet;
