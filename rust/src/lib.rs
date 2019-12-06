@@ -1,4 +1,4 @@
-pub mod decode_string;
+pub mod palindrome_partitioning;
 
 pub mod utils {
     use std::collections::HashSet;
