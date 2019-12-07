@@ -1,4 +1,4 @@
-pub mod valid_sudoku;
+pub mod evaluate_reverse_polish_notation;
 
 pub mod utils {
     use std::collections::HashSet;
