@@ -1,4 +1,4 @@
-pub mod four_sum_2;
+pub mod gas_station;
 
 pub mod utils {
     use std::collections::HashSet;
