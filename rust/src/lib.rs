@@ -1,4 +1,4 @@
-pub mod gas_station;
+pub mod trapping_rain_water;
 
 pub mod utils {
     use std::collections::HashSet;
