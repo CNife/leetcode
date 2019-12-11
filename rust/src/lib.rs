@@ -1,4 +1,4 @@
-pub mod trapping_rain_water;
+pub mod longest_consecutive_sequence;
 
 pub mod utils {
     use std::collections::HashSet;
