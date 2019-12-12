@@ -1,4 +1,4 @@
-pub mod longest_consecutive_sequence;
+pub mod number_of_islands;
 
 pub mod utils {
     use std::collections::HashSet;
