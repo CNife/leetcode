@@ -1,4 +1,4 @@
-pub mod longest_increasing_subsequence;
+pub mod find_peak_element;
 
 pub mod utils {
     use std::collections::HashSet;
