@@ -1,4 +1,4 @@
-pub mod course_schedule_2;
+pub mod longest_increasing_subsequence;
 
 pub mod utils {
     use std::collections::HashSet;
