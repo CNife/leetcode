@@ -1,4 +1,4 @@
-pub mod number_of_islands;
+pub mod course_schedule_2;
 
 pub mod utils {
     use std::collections::HashSet;
