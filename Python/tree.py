@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import Optional
 
 
 class TreeNode:
@@ -14,3 +14,6 @@ class TreeNode:
                 and self.val == other.val
                 and self.left == other.left
                 and self.right == other.right)
+
+    def __repr__(self):
+        return f'TreeNode(val: {self.val}, left: {self.left}, right: {self.right})'
