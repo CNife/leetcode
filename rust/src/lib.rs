@@ -1,4 +1,4 @@
-pub mod find_peak_element;
+pub mod sliding_window_maximum;
 
 pub mod utils {
     use std::collections::HashSet;
