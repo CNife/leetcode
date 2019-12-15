@@ -1,4 +1,4 @@
-pub mod sliding_window_maximum;
+pub mod word_break;
 
 pub mod utils {
     use std::collections::HashSet;
