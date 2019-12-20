@@ -1,4 +1,4 @@
-pub mod word_break;
+pub mod longest_substring_with_at_least_k_repeating_characters;
 
 pub mod utils {
     use std::collections::HashSet;
