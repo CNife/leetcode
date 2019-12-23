@@ -1,4 +1,4 @@
-pub mod word_search;
+pub mod the_skyline_problem;
 
 pub mod utils {
     use std::collections::HashSet;
