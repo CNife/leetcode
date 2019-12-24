@@ -1,4 +1,4 @@
-pub mod the_skyline_problem;
+pub mod merge_intervals;
 
 pub mod utils {
     use std::collections::HashSet;
