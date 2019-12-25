@@ -1,4 +1,4 @@
-pub mod merge_intervals;
+pub mod surrounded_regions;
 
 pub mod utils {
     use std::collections::HashSet;
