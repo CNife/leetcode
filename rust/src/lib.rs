@@ -1,4 +1,4 @@
-pub mod surrounded_regions;
+pub mod longest_increasing_path_in_a_matrix;
 
 pub mod utils {
     use std::collections::HashSet;
