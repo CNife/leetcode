@@ -1,5 +1,6 @@
-pub mod longest_increasing_path_in_a_matrix;
+pub mod word_search_2;
 
+#[cfg(test)]
 pub mod utils {
     use std::collections::HashSet;
     use std::hash::Hash;
