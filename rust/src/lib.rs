@@ -1,4 +1,4 @@
-pub mod word_search_2;
+pub mod task_scheduler;
 
 #[cfg(test)]
 pub mod utils {
