@@ -1,8 +1,9 @@
-pub mod task_scheduler;
+pub mod remove_invalid_parentheses;
 
 #[cfg(test)]
 pub mod utils {
     use std::collections::HashSet;
+    use std::fmt::Debug;
     use std::hash::Hash;
     use std::iter::FromIterator;
 
@@ -19,5 +20,14 @@ pub mod utils {
         T: Eq + Hash,
     {
         HashSet::from_iter(v.into_iter())
+    }
+
+    pub fn assert_same_set<T>(mut output: Vec<T>, mut expected: Vec<T>)
+    where
+        T: Ord + Debug,
+    {
+        output.sort_unstable();
+        expected.sort_unstable();
+        assert_eq!(output, expected);
     }
 }
