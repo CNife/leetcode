@@ -1,4 +1,4 @@
-pub mod remove_invalid_parentheses;
+pub mod find_numbers_with_even_number_of_digits;
 
 #[cfg(test)]
 pub mod utils {
