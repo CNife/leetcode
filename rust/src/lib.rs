@@ -1,4 +1,4 @@
-pub mod find_numbers_with_even_number_of_digits;
+pub mod partition_array_into_disjoint_intervals;
 
 #[cfg(test)]
 pub mod utils {
