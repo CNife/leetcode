@@ -1,4 +1,4 @@
-pub mod subtract_the_product_and_sum_of_digits_of_an_integer;
+pub mod max_increase_to_keep_city_skyline;
 
 #[cfg(test)]
 pub mod utils {
