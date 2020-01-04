@@ -1,4 +1,4 @@
-pub mod partition_array_into_disjoint_intervals;
+pub mod subtract_the_product_and_sum_of_digits_of_an_integer;
 
 #[cfg(test)]
 pub mod utils {
