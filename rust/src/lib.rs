@@ -1,4 +1,4 @@
-pub mod max_increase_to_keep_city_skyline;
+pub mod iterator_for_combination;
 
 #[cfg(test)]
 pub mod utils {
