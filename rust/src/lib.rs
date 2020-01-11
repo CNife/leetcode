@@ -1,4 +1,4 @@
-pub mod iterator_for_combination;
+pub mod divide_two_integers;
 
 #[cfg(test)]
 pub mod utils {
