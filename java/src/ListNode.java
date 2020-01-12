@@ -1,19 +1,17 @@
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Objects;
 
 class ListNode {
     int val;
     ListNode next;
 
-    @Contract(pure = true)
     ListNode(int val) {
         this.val = val;
     }
 
-    @Contract(pure = true)
-    static ListNode newList(@NotNull int[] values) {
+    static ListNode newList(int[] values) {
+        if (values == null) {
+            return null;
+        }
         ListNode head = null, prev = null;
         for (int value : values) {
             ListNode next = new ListNode(value);
@@ -27,17 +25,25 @@ class ListNode {
         return head;
     }
 
-    @Contract(value = "null -> false", pure = true)
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ListNode)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         ListNode listNode = (ListNode) o;
-        return val == listNode.val;
+        return val == listNode.val &&
+                Objects.equals(next, listNode.next);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(val);
+        return Objects.hash(val, next);
+    }
+
+    @Override
+    public String toString() {
+        return "ListNode{" +
+                "val=" + val +
+                ", next=" + next +
+                '}';
     }
 }
