@@ -1,4 +1,4 @@
-pub mod decompress_run_length_encoded_list;
+pub mod find_first_and_last_position_of_element_in_sorted_array;
 
 #[cfg(test)]
 pub mod utils {
