@@ -1,4 +1,4 @@
-pub mod largest_rectangle_in_histogram;
+pub mod base_7;
 
 #[cfg(test)]
 pub mod utils {
