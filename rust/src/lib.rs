@@ -1,4 +1,4 @@
-pub mod base_7;
+pub mod relative_ranks;
 
 #[cfg(test)]
 pub mod utils {
