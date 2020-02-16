@@ -1,4 +1,4 @@
-pub mod relative_ranks;
+pub mod perfect_number;
 
 #[cfg(test)]
 pub mod utils {
