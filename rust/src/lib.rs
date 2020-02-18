@@ -1,8 +1,8 @@
-pub mod perfect_number;
+pub mod four_sum;
 
 #[cfg(test)]
 pub mod utils {
-    use std::collections::HashSet;
+    use std::collections::{BTreeSet, HashSet};
     use std::fmt::Debug;
     use std::hash::Hash;
     use std::iter::FromIterator;
@@ -20,6 +20,15 @@ pub mod utils {
         T: Eq + Hash,
     {
         HashSet::from_iter(v.into_iter())
+    }
+
+    pub fn ss<T>(v: Vec<Vec<T>>) -> BTreeSet<BTreeSet<T>>
+    where
+        T: Ord,
+    {
+        v.into_iter()
+            .map(|inner| inner.into_iter().collect::<BTreeSet<_>>())
+            .collect()
     }
 
     pub fn assert_same_set<T>(mut output: Vec<T>, mut expected: Vec<T>)
