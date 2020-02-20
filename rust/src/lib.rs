@@ -1,4 +1,4 @@
-pub mod k_diff_pairs_in_an_array;
+pub mod permutations_2;
 
 #[cfg(test)]
 pub mod utils {
