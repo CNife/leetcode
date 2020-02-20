@@ -1,4 +1,4 @@
-pub mod four_sum;
+pub mod k_diff_pairs_in_an_array;
 
 #[cfg(test)]
 pub mod utils {
