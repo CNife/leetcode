@@ -1,4 +1,4 @@
-pub mod longest_harmonious_subsequence;
+pub mod permutation_sequence;
 
 #[cfg(test)]
 pub mod utils;
