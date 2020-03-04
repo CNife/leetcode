@@ -36,7 +36,7 @@ public class BinaryTreeTilt {
                 new TestCase<>(1, TreeNode.newTree(1, 2, 3))
         );
         for (TestCase<Integer, TreeNode> testCase : testCases) {
-            Assertions.assertEquals(testCase.expected, findTilt(testCase.testSource));
+            Assertions.assertEquals(testCase.expected, findTilt(testCase.source));
         }
     }
 }

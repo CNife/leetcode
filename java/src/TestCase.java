@@ -1,9 +1,9 @@
-public class TestCase<E, T> {
+class TestCase<E, S> {
     E expected;
-    T testSource;
+    S source;
 
-    public TestCase(E expected, T testSource) {
+    TestCase(E expected, S source) {
         this.expected = expected;
-        this.testSource = testSource;
+        this.source = source;
     }
 }
