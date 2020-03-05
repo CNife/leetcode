@@ -1,4 +1,4 @@
-pub mod search_a_2d_matrix;
+pub mod combinations;
 
 #[cfg(test)]
 pub mod utils;
