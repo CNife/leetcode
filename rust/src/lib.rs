@@ -1,4 +1,4 @@
-pub mod max_value_in_queue;
+pub mod maximum_product_of_three_numbers;
 
 #[cfg(test)]
 pub mod utils;
