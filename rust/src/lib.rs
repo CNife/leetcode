@@ -1,4 +1,4 @@
-pub mod remove_duplicates_from_sorted_array_2;
+pub mod coin_change;
 
 #[cfg(test)]
 pub mod utils;
