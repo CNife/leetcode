@@ -8,7 +8,7 @@ class ListNode {
         this.val = val;
     }
 
-    static ListNode newList(int[] values) {
+    static ListNode newList(int... values) {
         if (values == null) {
             return null;
         }
@@ -41,9 +41,6 @@ class ListNode {
 
     @Override
     public String toString() {
-        return "ListNode{" +
-                "val=" + val +
-                ", next=" + next +
-                '}';
+        return val + "->" + next;
     }
 }
