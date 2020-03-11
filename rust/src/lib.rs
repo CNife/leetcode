@@ -1,4 +1,4 @@
-pub mod search_in_rotated_sorted_array_2;
+pub mod partition_array_into_three_parts_with_equal_sum;
 
 #[cfg(test)]
 pub mod utils;
