@@ -1,4 +1,4 @@
-pub mod partition_array_into_three_parts_with_equal_sum;
+pub mod greatest_common_divisor_of_strings;
 
 #[cfg(test)]
 pub mod utils;
