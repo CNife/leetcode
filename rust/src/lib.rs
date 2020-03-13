@@ -1,4 +1,4 @@
-pub mod greatest_common_divisor_of_strings;
+pub mod majority_element;
 
 #[cfg(test)]
 pub mod utils;
