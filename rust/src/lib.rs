@@ -1,4 +1,4 @@
-pub mod sum_of_square_numbers;
+pub mod subsets_2;
 
 #[cfg(test)]
 pub mod utils;
