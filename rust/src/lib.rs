@@ -1,4 +1,4 @@
-pub mod subsets_2;
+pub mod max_area_of_island;
 
 #[cfg(test)]
 pub mod utils;
