@@ -1,4 +1,4 @@
-pub mod max_area_of_island;
+pub mod compress_string_lcci;
 
 #[cfg(test)]
 pub mod utils;
