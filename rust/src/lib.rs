@@ -1,4 +1,4 @@
-pub mod compress_string_lcci;
+pub mod rectangle_overlap;
 
 #[cfg(test)]
 pub mod utils;
