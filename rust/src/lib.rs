@@ -1,4 +1,4 @@
-pub mod water_and_jug_problem;
+pub mod maximum_average_subarray_1;
 
 #[cfg(test)]
 pub mod utils;
