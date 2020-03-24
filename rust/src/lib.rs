@@ -1,4 +1,4 @@
-pub mod the_masseuse_lcci;
+pub mod triangle;
 
 #[cfg(test)]
 pub mod utils;
