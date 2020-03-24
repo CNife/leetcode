@@ -1,4 +1,4 @@
-pub mod minimum_increment_to_make_array_unique;
+pub mod the_masseuse_lcci;
 
 #[cfg(test)]
 pub mod utils;
