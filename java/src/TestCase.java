@@ -1,3 +1,4 @@
+@Deprecated
 class TestCase<E, S> {
     E expected;
     S source;
