@@ -1,9 +1,7 @@
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import test.Tester;
 
 public class DeepDarkFraction {
-    public int[] fraction(int[] cont) {
+    public static int[] fraction(int[] cont) {
         int[] result = new int[]{
                 cont[cont.length - 1],
                 1
@@ -16,19 +14,16 @@ public class DeepDarkFraction {
         return result;
     }
 
-    @Test
-    void test() {
-        int[][] input = new int[][]{
+    public static void main(String[] args) {
+        Tester tester = new Tester(DeepDarkFraction.class);
+        tester.addTestCase(
                 new int[]{3, 2, 0, 2},
-                new int[]{0, 0, 3}
-        };
-        int[][] expected = new int[][]{
-                new int[]{13, 4},
+                new int[]{13, 4}
+        );
+        tester.addTestCase(
+                new int[]{0, 0, 3},
                 new int[]{3, 1}
-        };
-
-        for (int i = 0; i < input.length; i++) {
-            assertArrayEquals(expected[i], fraction(input[i]));
-        }
+        );
+        tester.runTestCases();
     }
 }

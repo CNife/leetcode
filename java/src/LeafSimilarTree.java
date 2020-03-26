@@ -1,9 +1,12 @@
+import leetcode.TreeNode;
+import test.Tester;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class LeafSimilarTree {
-    private static boolean leafSimilar(TreeNode root1, TreeNode root2) {
+    public static boolean leafSimilar(TreeNode root1, TreeNode root2) {
         if (Objects.equals(root1, root2)) {
             return true;
         }
@@ -28,8 +31,8 @@ public class LeafSimilarTree {
     }
 
     public static void main(String[] args) {
-        TreeNode root1 = new TreeNode(1);
-        TreeNode root2 = new TreeNode(2);
-        System.out.println(leafSimilar(root1, root2));
+        Tester tester = new Tester(LeafSimilarTree.class);
+        tester.addTestCase(new TreeNode(1), new TreeNode(2), false);
+        tester.runTestCases();
     }
 }

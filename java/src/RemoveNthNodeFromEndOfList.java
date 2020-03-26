@@ -1,6 +1,5 @@
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import leetcode.ListNode;
+import test.Tester;
 
 public class RemoveNthNodeFromEndOfList {
     public static ListNode removeNthFromEnd(ListNode head, int n) {
@@ -35,30 +34,16 @@ public class RemoveNthNodeFromEndOfList {
         return node;
     }
 
-    @Test
-    void test1() {
-        new TestCase(new int[]{1, 2, 3, 4, 5}, 2, new int[]{1, 2, 3, 5}).runTest();
-    }
-
-    @Test
-    void test2() {
-        new TestCase(new int[]{1, 2}, 1, new int[]{1}).runTest();
-    }
-
-    private static class TestCase {
-        ListNode origin;
-        ListNode expected;
-        int n;
-
-        TestCase(int[] origin, int n, int[] expected) {
-            this.origin = ListNode.newList(origin);
-            this.n = n;
-            this.expected = ListNode.newList(expected);
-        }
-
-        void runTest() {
-            ListNode output = removeNthFromEnd(origin, n);
-            assertEquals(expected, output);
-        }
+    public static void main(String[] args) {
+        Tester tester = new Tester(RemoveNthNodeFromEndOfList.class);
+        tester.addTestCase(
+                ListNode.newList(1, 2, 3, 4, 5), 2,
+                ListNode.newList(1, 2, 3, 5)
+        );
+        tester.addTestCase(
+                ListNode.newList(1, 2), 1,
+                ListNode.newList(1)
+        );
+        tester.runTestCases();
     }
 }

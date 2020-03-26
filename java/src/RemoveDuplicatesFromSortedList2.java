@@ -1,11 +1,8 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-import java.util.List;
+import leetcode.ListNode;
+import test.Tester;
 
 public class RemoveDuplicatesFromSortedList2 {
-    static ListNode deleteDuplicates(ListNode head) {
+    public static ListNode deleteDuplicates(ListNode head) {
         ListNode tmpHead = new ListNode(-1);
         tmpHead.next = head;
         ListNode prev = tmpHead;
@@ -23,15 +20,16 @@ public class RemoveDuplicatesFromSortedList2 {
         return tmpHead.next;
     }
 
-    @Test
-    void test() {
-        List<TestCase<ListNode, ListNode>> testCases = Arrays.asList(
-                new TestCase<>(ListNode.newList(1, 2, 5), ListNode.newList(1, 2, 3, 3, 4, 4, 5)),
-                new TestCase<>(ListNode.newList(2, 3), ListNode.newList(1, 1, 1, 2, 3))
+    public static void main(String[] args) {
+        Tester tester = new Tester(RemoveDuplicatesFromSortedList2.class);
+        tester.addTestCase(
+                ListNode.newList(1, 2, 3, 3, 4, 4, 5),
+                ListNode.newList(1, 2, 5)
         );
-        for (TestCase<ListNode, ListNode> testCase : testCases) {
-            ListNode output = deleteDuplicates(testCase.source);
-            Assertions.assertEquals(testCase.expected, output);
-        }
+        tester.addTestCase(
+                ListNode.newList(1, 1, 1, 2, 3),
+                ListNode.newList(2, 3)
+        );
+        tester.runTestCases();
     }
 }

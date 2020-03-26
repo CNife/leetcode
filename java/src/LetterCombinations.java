@@ -2,15 +2,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 class LetterCombinations {
-    private String[] LETTER_TABLE = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    private static String[] LETTER_TABLE = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
-    public List<String> letterCombinations(String digits) {
+    public static List<String> letterCombinations(String digits) {
         List<String> res = new ArrayList<>();
         doCombination(res, new StringBuilder(), digits, 0);
         return res;
     }
 
-    private void doCombination(List<String> res, StringBuilder sb, String digits, int i) {
+    private static void doCombination(List<String> res, StringBuilder sb, String digits, int i) {
         if (i < digits.length()) {
             char letter = digits.charAt(i);
             for (char next : LETTER_TABLE[letter - '0'].toCharArray()) {

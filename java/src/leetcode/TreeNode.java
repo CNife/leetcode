@@ -1,17 +1,19 @@
+package leetcode;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Objects;
 
-class TreeNode {
-    int val;
-    TreeNode left = null;
-    TreeNode right = null;
+public class TreeNode {
+    public int val;
+    public TreeNode left = null;
+    public TreeNode right = null;
 
-    TreeNode(int val) {
+    public TreeNode(int val) {
         this.val = val;
     }
 
-    static TreeNode newTree(Integer... nums) {
+    public static TreeNode newTree(Integer... nums) {
         int len = nums.length;
         if (len == 0) {
             return null;

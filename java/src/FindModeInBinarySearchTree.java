@@ -1,5 +1,5 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import leetcode.TreeNode;
+import test.Tester;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class FindModeInBinarySearchTree {
-    private static int[] findMode(TreeNode root) {
+    public static int[] findMode(TreeNode root) {
         if (root == null) {
             return new int[]{};
         }
@@ -44,14 +44,12 @@ public class FindModeInBinarySearchTree {
         return result.stream().mapToInt(i -> i).toArray();
     }
 
-    @Test
-    void test() {
-        TreeNode root = new TreeNode(1);
-        root.right = new TreeNode(2);
-        root.right.right = new TreeNode(2);
-        int[] expected = new int[]{2};
-
-        int[] result = findMode(root);
-        Assertions.assertArrayEquals(expected, result);
+    public static void main(String[] args) {
+        Tester tester = new Tester(FindModeInBinarySearchTree.class);
+        tester.addTestCase(
+                TreeNode.newTree(1, null, 2, null, 2),
+                new int[]{2}
+        );
+        tester.runTestCases();
     }
 }

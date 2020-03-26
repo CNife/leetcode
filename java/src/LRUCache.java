@@ -1,8 +1,4 @@
-import org.junit.jupiter.api.Test;
-
 import java.util.HashMap;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LRUCache {
     private HashMap<Integer, Node> map;
@@ -88,22 +84,5 @@ public class LRUCache {
             this.prev = null;
             this.next = null;
         }
-    }
-}
-
-
-class LRUCacheTest {
-    @Test
-    void test() {
-        LRUCache cache = new LRUCache(2);
-        cache.put(1, 1);
-        cache.put(2, 2);
-        assertEquals(cache.get(1), 1);
-        cache.put(3, 3);
-        assertEquals(cache.get(2), -1);
-        cache.put(4, 4);
-        assertEquals(cache.get(1), -1);
-        assertEquals(cache.get(3), 3);
-        assertEquals(cache.get(4), 4);
     }
 }

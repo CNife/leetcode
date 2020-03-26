@@ -1,8 +1,8 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import leetcode.ListNode;
+import test.Tester;
 
 public class SwapNodesInPairs {
-    static ListNode swapPairs(ListNode head) {
+    public static ListNode swapPairs(ListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
@@ -22,25 +22,20 @@ public class SwapNodesInPairs {
         return newHead;
     }
 
-    @Test
-    void test() {
-        TestCase[] cases = new TestCase[]{
-                new TestCase(new int[]{1, 2, 3, 4}, new int[]{2, 1, 4, 3}),
-                new TestCase(new int[]{1, 2, 3}, new int[]{2, 1, 3}),
-                new TestCase(new int[]{}, new int[]{})
-        };
-        for (TestCase testCase : cases) {
-            Assertions.assertEquals(testCase.expected, swapPairs(testCase.input));
-        }
-    }
-
-    private static class TestCase {
-        ListNode input;
-        ListNode expected;
-
-        TestCase(int[] input, int[] expected) {
-            this.input = ListNode.newList(input);
-            this.expected = ListNode.newList(expected);
-        }
+    public static void main(String[] args) {
+        Tester tester = new Tester(SwapNodesInPairs.class);
+        tester.addTestCase(
+                ListNode.newList(1, 2, 3, 4),
+                ListNode.newList(2, 1, 4, 3)
+        );
+        tester.addTestCase(
+                ListNode.newList(1, 2, 3),
+                ListNode.newList(2, 1, 3)
+        );
+        tester.addTestCase(
+                ListNode.newList(),
+                ListNode.newList()
+        );
+        tester.runTestCases();
     }
 }

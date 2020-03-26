@@ -1,11 +1,11 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import leetcode.TreeNode;
+import test.Tester;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MinimumAbsoluteDifferenceInBST {
-    static int getMinimumDifference(TreeNode root) {
+    public static int getMinimumDifference(TreeNode root) {
         List<TreeNode> stack = new ArrayList<>();
         TreeNode node = root;
         Integer prevValue = null;
@@ -28,16 +28,10 @@ public class MinimumAbsoluteDifferenceInBST {
         return result;
     }
 
-    @Test
-    void test() {
-        TreeNode root = new TreeNode(1);
-        root.right = new TreeNode(2);
-        root.right.right = new TreeNode(3);
-        Assertions.assertEquals(1, getMinimumDifference(root));
-
-        root = new TreeNode(5);
-        root.left = new TreeNode(4);
-        root.right = new TreeNode(7);
-        Assertions.assertEquals(1, getMinimumDifference(root));
+    public static void main(String[] args) {
+        Tester tester = new Tester(MinimumAbsoluteDifferenceInBST.class);
+        tester.addTestCase(TreeNode.newTree(1, null, 2, null, 3), 1);
+        tester.addTestCase(TreeNode.newTree(5, 4, 7), 1);
+        tester.runTestCases();
     }
 }

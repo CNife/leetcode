@@ -1,14 +1,16 @@
+package leetcode;
+
 import java.util.Objects;
 
-class ListNode {
-    int val;
-    ListNode next;
+public class ListNode {
+    public int val;
+    public ListNode next;
 
-    ListNode(int val) {
+    public ListNode(int val) {
         this.val = val;
     }
 
-    static ListNode newList(int... values) {
+    public static ListNode newList(int... values) {
         if (values == null) {
             return null;
         }

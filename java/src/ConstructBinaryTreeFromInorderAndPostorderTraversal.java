@@ -1,9 +1,5 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import leetcode.TreeNode;
+import test.Tester;
 
 public class ConstructBinaryTreeFromInorderAndPostorderTraversal {
     public static TreeNode buildTree(int[] inorder, int[] postorder) {
@@ -21,9 +17,6 @@ public class ConstructBinaryTreeFromInorderAndPostorderTraversal {
             return null;
         }
 
-        System.out.println("inorder " + Arrays.toString(Arrays.copyOfRange(inorder, inorderStart, inorderEnd)));
-        System.out.println("postorder " + Arrays.toString(Arrays.copyOfRange(postorder, postorderStart, postorderEnd)));
-
         int rootVal = postorder[postorderEnd - 1];
         int rootOffset = 0;
         for (int i = inorderStart; i < inorderEnd; i++) {
@@ -39,27 +32,13 @@ public class ConstructBinaryTreeFromInorderAndPostorderTraversal {
         return root;
     }
 
-    @Test
-    void test() {
-        List<TestCase> testCases = Collections.singletonList(
-                new TestCase(new int[]{9, 3, 15, 20, 7}, new int[]{9, 15, 7, 20, 3},
-                        TreeNode.newTree(3, 9, 20, null, null, 15, 7))
+    public static void main(String[] args) {
+        Tester tester = new Tester(ConstructBinaryTreeFromInorderAndPostorderTraversal.class);
+        tester.addTestCase(
+                new int[]{9, 3, 15, 20, 7},
+                new int[]{9, 15, 7, 20, 3},
+                TreeNode.newTree(3, 9, 20, null, null, 15, 7)
         );
-        for (TestCase testCase : testCases) {
-            TreeNode actual = buildTree(testCase.inorder, testCase.postorder);
-            Assertions.assertEquals(testCase.expected, actual);
-        }
-    }
-
-    private static class TestCase {
-        int[] inorder;
-        int[] postorder;
-        TreeNode expected;
-
-        public TestCase(int[] inorder, int[] postorder, TreeNode expected) {
-            this.inorder = inorder;
-            this.postorder = postorder;
-            this.expected = expected;
-        }
+        tester.runTestCases();
     }
 }

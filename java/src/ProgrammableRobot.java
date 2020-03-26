@@ -1,11 +1,9 @@
-import org.junit.jupiter.api.Test;
+import test.Tester;
 
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ProgrammableRobot {
     public static boolean robot(String commands, int[][] obstacles, int x, int y) {
@@ -24,17 +22,12 @@ public class ProgrammableRobot {
         }
     }
 
-    @Test
-    void test() {
-        TestCase[] cases = new TestCase[]{
-                new TestCase("URR", new int[][]{}, 3, 2, true),
-                new TestCase("URR", new int[][]{new int[]{2, 2}}, 3, 2, false),
-                new TestCase("URR", new int[][]{new int[]{4, 2}}, 3, 2, true)
-        };
-        for (TestCase testCase : cases) {
-            boolean output = robot(testCase.command, testCase.obstacles, testCase.x, testCase.y);
-            assertEquals(testCase.expected, output);
-        }
+    public static void main(String[] args) {
+        Tester tester = new Tester(ProgrammableRobot.class);
+        tester.addTestCase("URR", new int[][]{}, 3, 2, true);
+        tester.addTestCase("URR", new int[][]{new int[]{2, 2}}, 3, 2, false);
+        tester.addTestCase("URR", new int[][]{new int[]{4, 2}}, 3, 2, true);
+        tester.runTestCases();
     }
 
     private static class Game {
@@ -93,22 +86,6 @@ public class ProgrammableRobot {
         @Override
         public int hashCode() {
             return Objects.hash(x, y);
-        }
-    }
-
-    private static class TestCase {
-        String command;
-        int[][] obstacles;
-        int x;
-        int y;
-        boolean expected;
-
-        TestCase(String command, int[][] obstacles, int x, int y, boolean expected) {
-            this.command = command;
-            this.obstacles = obstacles;
-            this.x = x;
-            this.y = y;
-            this.expected = expected;
         }
     }
 }

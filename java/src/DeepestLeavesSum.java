@@ -1,21 +1,12 @@
+import leetcode.TreeNode;
+import test.Tester;
+
 public class DeepestLeavesSum {
-
-    public static void main(String[] args) {
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.left.left = new TreeNode(4);
-        root.left.left.left = new TreeNode(7);
-        root.left.right = new TreeNode(5);
-        root.right = new TreeNode(3);
-        root.right.right = new TreeNode(6);
-        root.right.right.right = new TreeNode(8);
-
-        int output = new DeepestLeavesSum().deepestLeavesSum(root);
-        System.out.println(output);
-        assert output == 15;
+    public static int deepestLeavesSum(TreeNode root) {
+        return fuck(root).sum;
     }
 
-    private DepthInfo fuck(TreeNode root) {
+    private static DepthInfo fuck(TreeNode root) {
         if (root == null) {
             return DepthInfo.EmptyNode;
         } else if (root.left == null && root.right == null) {
@@ -33,8 +24,13 @@ public class DeepestLeavesSum {
         }
     }
 
-    public int deepestLeavesSum(TreeNode root) {
-        return fuck(root).sum;
+    public static void main(String[] args) {
+        Tester tester = new Tester(DeepestLeavesSum.class);
+        tester.addTestCase(
+                TreeNode.newTree(1, 2, 3, 4, 5, null, 6, 7, null, null, null, null, 8),
+                15
+        );
+        tester.runTestCases();
     }
 
     private static class DepthInfo {

@@ -1,11 +1,8 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-import java.util.List;
+import leetcode.TreeNode;
+import test.Tester;
 
 public class BinaryTreeTilt {
-    static int findTilt(TreeNode root) {
+    public static int findTilt(TreeNode root) {
         if (root == null) {
             return 0;
         }
@@ -29,14 +26,10 @@ public class BinaryTreeTilt {
         return Math.abs(leftSum - rightSum) + leftTilt + rightTilt;
     }
 
-    @Test
-    void test() {
-        List<TestCase<Integer, TreeNode>> testCases = Arrays.asList(
-                new TestCase<>(0, null),
-                new TestCase<>(1, TreeNode.newTree(1, 2, 3))
-        );
-        for (TestCase<Integer, TreeNode> testCase : testCases) {
-            Assertions.assertEquals(testCase.expected, findTilt(testCase.source));
-        }
+    public static void main(String[] args) {
+        Tester tester = new Tester(BinaryTreeTilt.class);
+        tester.addTestCase(null, 0);
+        tester.addTestCase(TreeNode.newTree(1, 2, 3), 1);
+        tester.runTestCases();
     }
 }

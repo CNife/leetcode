@@ -1,11 +1,8 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-import java.util.List;
+import leetcode.TreeNode;
+import test.Tester;
 
 public class DiameterOfBinaryTree {
-    static int diameterOfBinaryTree(TreeNode root) {
+    public static int diameterOfBinaryTree(TreeNode root) {
         if (root == null) {
             return 0;
         }
@@ -19,16 +16,11 @@ public class DiameterOfBinaryTree {
         return Math.max(Math.max(leftDiameter, rightDiameter), leftDepth + rightDepth + 2);
     }
 
-    @Test
-    void test() {
-        List<TestCase<Integer, TreeNode>> testCases = Arrays.asList(
-                new TestCase<>(3, TreeNode.newTree(1, 2, 3, 4, 5)),
-                new TestCase<>(0, TreeNode.newTree(1)),
-                new TestCase<>(0, null)
-        );
-        for (TestCase<Integer, TreeNode> testCase : testCases) {
-            int actual = diameterOfBinaryTree(testCase.source);
-            Assertions.assertEquals(testCase.expected, actual);
-        }
+    public static void main(String[] args) {
+        Tester tester = new Tester(DiameterOfBinaryTree.class);
+        tester.addTestCase(TreeNode.newTree(1, 2, 3, 4, 5), 3);
+        tester.addTestCase(TreeNode.newTree(1), 0);
+        tester.addTestCase(null, 0);
+        tester.runTestCases();
     }
 }

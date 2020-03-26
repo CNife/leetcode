@@ -1,5 +1,5 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import leetcode.TreeNode;
+import test.Tester;
 
 import java.util.*;
 
@@ -68,7 +68,7 @@ public class UniqueBinarySearchTrees2 {
     //     return parent;
     // }
 
-    static List<TreeNode> generateTrees(int n) {
+    public static List<TreeNode> generateTrees(int n) {
         if (n <= 0)
             return new LinkedList<>();
         HashMap<Pair, LinkedList<TreeNode>> memo = new HashMap<>();
@@ -123,27 +123,26 @@ public class UniqueBinarySearchTrees2 {
         }
     }
 
-    @Test
-    void test() {
-        List<TestCase<List<TreeNode>, Integer>> testCases = Arrays.asList(
-                new TestCase<>(
-                        Arrays.asList(
-                                TreeNode.newTree(1, null, 3, 2),
-                                TreeNode.newTree(3, 2, null, 1),
-                                TreeNode.newTree(3, 1, null, null, 2),
-                                TreeNode.newTree(2, 1, 3),
-                                TreeNode.newTree(1, null, 2, null, 3)),
-                        3),
-                new TestCase<>(
-                        Collections.singletonList(
-                                TreeNode.newTree(1)),
-                        1
+    public static void main(String[] args) {
+        Tester tester = new Tester(
+                UniqueBinarySearchTrees2.class,
+                list -> new HashSet<>((Collection<?>) list)
+        );
+        tester.addTestCase(
+                3,
+                Arrays.asList(
+                        TreeNode.newTree(1, null, 3, 2),
+                        TreeNode.newTree(3, 2, null, 1),
+                        TreeNode.newTree(3, 1, null, null, 2),
+                        TreeNode.newTree(2, 1, 3),
+                        TreeNode.newTree(1, null, 2, null, 3)
                 )
         );
-        for (TestCase<List<TreeNode>, Integer> testCase : testCases) {
-            List<TreeNode> actual = generateTrees(testCase.source);
-            Assertions.assertEquals(new HashSet<>(testCase.expected), new HashSet<>(actual));
-        }
+        tester.addTestCase(
+                1,
+                Collections.singletonList(TreeNode.newTree(1))
+        );
+        tester.runTestCases();
     }
 
     private static class Pair {
