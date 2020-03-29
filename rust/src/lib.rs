@@ -1,4 +1,4 @@
-pub mod x_of_a_kind_in_a_deck_of_cards;
+pub mod as_far_from_land_as_possible;
 
 #[cfg(test)]
 pub mod utils;
