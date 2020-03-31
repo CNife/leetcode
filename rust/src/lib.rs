@@ -1,4 +1,4 @@
-pub mod last_remaining_in_circle;
+pub mod sort_an_array;
 
 #[cfg(test)]
 pub mod utils;
