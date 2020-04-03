@@ -1,4 +1,4 @@
-pub mod string_to_integer_atoi;
+pub mod word_ladder;
 
 #[cfg(test)]
 pub mod utils;
