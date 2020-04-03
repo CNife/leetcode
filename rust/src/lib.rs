@@ -1,4 +1,4 @@
-pub mod maximum_nesting_depth_of_two_valid_parentheses_strings;
+pub mod string_to_integer_atoi;
 
 #[cfg(test)]
 pub mod utils;

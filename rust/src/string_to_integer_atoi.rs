@@ -1,40 +1,45 @@
+use std::i32;
+
 pub fn my_atoi(s: String) -> i32 {
-    let s = s.into_bytes();
-    let mut itr = s.into_iter();
+    let mut iter = s.chars();
     let mut is_positive = true;
     let mut result = 0i64;
 
-    while let Some(ch) = itr.next() {
+    while let Some(ch) = iter.next() {
         match ch {
-            b' ' => {}
-            b'-' => {
+            ' ' => continue,
+            '+' => break,
+            '-' => {
                 is_positive = false;
                 break;
             }
-            b'+' => break,
-            c if c.is_ascii_digit() => {
-                result = (c - b'0') as i64;
+            ch if ch.is_ascii_digit() => {
+                result = char_to_digit(ch);
                 break;
             }
             _ => return 0,
         }
     }
 
-    while let Some(ch) = itr.next() {
-        match ch {
-            c if c.is_ascii_digit() => {
-                result = result * 10 + (c - b'0') as i64;
-                if result > std::i32::MAX as i64 && is_positive {
-                    return std::i32::MAX;
-                } else if result > (std::i32::MAX as i64 + 1) && !is_positive {
-                    return std::i32::MIN;
-                }
+    while let Some(ch) = iter.next() {
+        if ch.is_ascii_digit() {
+            result = result * 10 + char_to_digit(ch);
+            if result > i32::MAX as i64 && is_positive {
+                return i32::MAX;
+            } else if result > (i32::MAX as i64 + 1) && !is_positive {
+                return i32::MIN;
             }
-            _ => break,
+        } else {
+            break;
         }
     }
 
     (if is_positive { result } else { -result }) as i32
+}
+
+#[inline]
+fn char_to_digit(ch: char) -> i64 {
+    ((ch as u8) - b'0') as i64
 }
 
 #[test]
