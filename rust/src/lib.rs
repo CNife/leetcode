@@ -1,4 +1,4 @@
-pub mod word_ladder;
+pub mod image_smoother;
 
 #[cfg(test)]
 pub mod utils;
