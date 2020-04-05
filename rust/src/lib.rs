@@ -1,4 +1,4 @@
-pub mod image_smoother;
+pub mod lfu_cache;
 
 #[cfg(test)]
 pub mod utils;
