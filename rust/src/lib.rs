@@ -1,4 +1,4 @@
-pub mod longest_continuous_increasing_subsequence;
+pub mod moving_count_of_robot;
 
 #[cfg(test)]
 pub mod utils;
