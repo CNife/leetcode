@@ -1,4 +1,4 @@
-pub mod moving_count_of_robot;
+pub mod valid_palindrome_2;
 
 #[cfg(test)]
 pub mod utils;
