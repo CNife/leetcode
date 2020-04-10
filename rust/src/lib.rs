@@ -1,4 +1,4 @@
-pub mod valid_palindrome_2;
+pub mod reverse_word_in_a_string;
 
 #[cfg(test)]
 pub mod utils;
