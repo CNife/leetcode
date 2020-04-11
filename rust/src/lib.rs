@@ -1,4 +1,4 @@
-pub mod reverse_word_in_a_string;
+pub mod super_egg_drop;
 
 #[cfg(test)]
 pub mod utils;
