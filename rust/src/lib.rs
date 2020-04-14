@@ -1,4 +1,4 @@
-pub mod design_twitter;
+pub mod repeated_string_match;
 
 #[cfg(test)]
 pub mod utils;
