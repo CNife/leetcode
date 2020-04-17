@@ -1,4 +1,4 @@
-pub mod fraction_to_recurring_decimal;
+pub mod count_binary_substrings;
 
 #[cfg(test)]
 pub mod utils;
