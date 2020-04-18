@@ -1,4 +1,4 @@
-pub mod simplify_path;
+pub mod degree_of_an_array;
 
 #[cfg(test)]
 pub mod utils;
