@@ -1,4 +1,4 @@
-pub mod degree_of_an_array;
+pub mod largest_number;
 
 #[cfg(test)]
 pub mod utils;
