@@ -1,4 +1,4 @@
-pub mod count_the_repetitions;
+pub mod binary_search;
 
 #[cfg(test)]
 pub mod utils;
