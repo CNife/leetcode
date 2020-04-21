@@ -1,4 +1,4 @@
-pub mod longest_word_in_dictionary;
+pub mod count_number_of_nice_subarrays;
 
 #[cfg(test)]
 pub mod utils;
