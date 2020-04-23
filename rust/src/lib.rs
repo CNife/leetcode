@@ -1,4 +1,4 @@
-pub mod count_number_of_nice_subarrays;
+pub mod coin_lcci;
 
 #[cfg(test)]
 pub mod utils;
