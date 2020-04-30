@@ -1,4 +1,4 @@
-pub mod find_smallest_letter_greater_than_target;
+pub mod happy_number;
 
 #[cfg(test)]
 pub mod utils;
