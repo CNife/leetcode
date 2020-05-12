@@ -1,4 +1,4 @@
-pub mod pow_x_n;
+pub mod min_stack;
 
 #[cfg(test)]
 pub mod utils;
