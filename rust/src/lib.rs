@@ -1,4 +1,4 @@
-pub mod subarray_sum_equals_k;
+pub mod shortest_completing_word;
 
 #[cfg(test)]
 pub mod utils;
