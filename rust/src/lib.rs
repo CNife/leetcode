@@ -1,4 +1,4 @@
-pub mod subarray_sums_divisible_by_k;
+pub mod house_robber;
 
 #[cfg(test)]
 pub mod utils;
