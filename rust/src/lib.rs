@@ -1,4 +1,4 @@
-pub mod kids_with_the_greatest_number_of_candies;
+pub mod product_of_array_except_self;
 
 #[cfg(test)]
 pub mod utils;
