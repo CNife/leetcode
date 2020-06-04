@@ -1,4 +1,4 @@
-pub mod product_of_array_except_self;
+pub mod rotate_string;
 
 #[cfg(test)]
 pub mod utils;
