@@ -35,6 +35,7 @@ public class Tester {
         throw new IllegalStateException("找不到测试方法");
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isInstance(Class<?> clazz, Object instance) {
         switch (clazz.getCanonicalName()) {
             case "boolean":
@@ -61,7 +62,7 @@ public class Tester {
     private static boolean smartEquals(Object lhs, Object rhs) {
         if (lhs == rhs) {
             return true;
-        } else if (lhs == null | rhs == null) {
+        } else if (lhs == null || rhs == null) {
             return false;
         } else if (lhs.getClass().isArray()) {
             switch (lhs.getClass().getComponentType().getCanonicalName()) {
@@ -110,7 +111,7 @@ public class Tester {
 
                 if (!smartEquals(expect, actual)) {
                     System.err.println("测试失败：");
-                    System.err.println("测例：" + Arrays.toString(testCase.source));
+                    System.err.println("测例：" + Arrays.deepToString(testCase.source));
                     System.err.println("实际结果：" + actual);
                     System.err.println("期望结果：" + expect);
                     System.exit(1);
