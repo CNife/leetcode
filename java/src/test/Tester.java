@@ -9,8 +9,8 @@ import java.util.Objects;
 import java.util.function.Function;
 
 public class Tester {
-    private List<TestCase> testCases;
-    private Method testMethod;
+    private final List<TestCase> testCases;
+    private final Method testMethod;
     private Function<Object, Object> transform;
 
     public Tester(Class<?> testClass) {
@@ -90,13 +90,50 @@ public class Tester {
         }
     }
 
+    private static String smartToString(Object obj) {
+        if (obj == null) {
+            return "null";
+        }
+        Class<?> clazz = obj.getClass();
+        if (clazz.isArray()) {
+            switch (clazz.getComponentType().getCanonicalName()) {
+                case "boolean":
+                    return Arrays.toString((boolean[]) obj);
+                case "byte":
+                    return Arrays.toString((byte[]) obj);
+                case "char":
+                    return Arrays.toString((char[]) obj);
+                case "short":
+                    return Arrays.toString((short[]) obj);
+                case "int":
+                    return Arrays.toString((int[]) obj);
+                case "long":
+                    return Arrays.toString((long[]) obj);
+                case "float":
+                    return Arrays.toString((float[]) obj);
+                case "double":
+                    return Arrays.toString((double[]) obj);
+                default:
+                    return Arrays.deepToString((Object[]) obj);
+            }
+        } else {
+            return String.valueOf(obj);
+        }
+    }
+
     public void addTestCase(Object... args) {
         checkTestCase(args);
 
-        Object expect = args[args.length - 1];
-        Object[] source = Arrays.copyOf(args, args.length - 1);
-        TestCase testCase = new TestCase(source, expect);
-        testCases.add(testCase);
+        Object expect;
+        Object[] source;
+        if (testMethod.getReturnType() == Void.class) {
+            expect = null;
+            source = args;
+        } else {
+            expect = args[args.length - 1];
+            source = Arrays.copyOf(args, args.length - 1);
+        }
+        testCases.add(new TestCase(source, expect));
     }
 
     public void runTestCases() {
@@ -112,8 +149,8 @@ public class Tester {
                 if (!smartEquals(expect, actual)) {
                     System.err.println("测试失败：");
                     System.err.println("测例：" + Arrays.deepToString(testCase.source));
-                    System.err.println("实际结果：" + actual);
-                    System.err.println("期望结果：" + expect);
+                    System.err.println("实际结果：" + smartToString(actual));
+                    System.err.println("期望结果：" + smartToString(expect));
                     System.exit(1);
                 }
             }
