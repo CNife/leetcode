@@ -1,7 +1,7 @@
 package binary_tree_maximum_path_sum
 
 import (
-	. "leetcode"
+	. "leetcode/types"
 	"testing"
 )
 
@@ -33,10 +33,6 @@ func TestMaxPathSum(t *testing.T) {
 				},
 			},
 			expected: 42,
-		},
-		{
-			tree:     nil,
-			expected: 0,
 		},
 		{
 			tree:     &TreeNode{Val: -3},
