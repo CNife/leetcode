@@ -2,6 +2,7 @@ package longest_common_prefix
 
 import "testing"
 
+//noinspection SpellCheckingInspection
 func Test_longestCommonPrefix(t *testing.T) {
 	type args struct {
 		strings []string
