@@ -7,17 +7,15 @@ class ListNode:
         self.next: Optional[ListNode] = None
 
     def __eq__(self, o: object) -> bool:
-        return isinstance(o, ListNode) and self.val == o.val and self.next == o.next
+        return (isinstance(o, ListNode)
+                and self.val == o.val
+                and self.next == o.next)
 
-    def __str__(self):
-        result = str(self.val)
-        if self.next is not None:
-            result += f'->{self.next.__str__()}'
-        return result
+    def __str__(self) -> str:
+        return f'{self.val}->{self.next}'
 
     def __repr__(self):
-        next_repr = None if self.next is None else self.next.__repr__()
-        return f'ListNode({self.val}, {next_repr}'
+        return f'ListNode(val={self.val},next={self.next})'
 
 
 def new_list(*nums: int) -> Optional[ListNode]:

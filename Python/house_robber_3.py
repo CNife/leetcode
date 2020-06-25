@@ -1,6 +1,4 @@
-import unittest
-
-from tree import TreeNode
+from leetcode import test, TreeNode, new_tree
 
 
 def rob(root: TreeNode) -> int:
@@ -9,19 +7,12 @@ def rob(root: TreeNode) -> int:
             return 0, 0
         left_max, left_no_rob = helper(node.left)
         right_max, right_no_rob = helper(node.right)
-        return max(left_no_rob + right_no_rob + node.val, left_max + right_max), left_max + right_max
+        return max(left_no_rob + right_no_rob + node.val,
+                   left_max + right_max), left_max + right_max
 
     return helper(root)[0]
 
 
-class Test(unittest.TestCase):
-    def test(self):
-        tree = TreeNode(3)
-        tree.left = TreeNode(4)
-        tree.left.left = TreeNode(1)
-        tree.left.right = TreeNode(3)
-        tree.right = TreeNode(5)
-        tree.right.right = TreeNode(1)
-
-        output = rob(tree)
-        self.assertEqual(output, 9)
+test(rob, [
+    (new_tree(3, 4, 5, 1, 3, None, 1), 9)
+])

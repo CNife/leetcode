@@ -1,8 +1,7 @@
 from collections import deque
 from typing import Optional
-from unittest import TestCase
 
-from tree import TreeNode
+from leetcode import TreeNode, test, new_tree
 
 
 def serialize(root: TreeNode) -> str:
@@ -20,7 +19,8 @@ def serialize(root: TreeNode) -> str:
 
 
 def deserialize(data: str) -> Optional[TreeNode]:
-    nodes = map(lambda t: None if t in ('null', '') else TreeNode(int(t)), data.split(','))
+    nodes = map(lambda t: None if t in ('null', '') else TreeNode(int(t)),
+                data.split(','))
     root = next(nodes)
     if root is None:
         return None
@@ -40,24 +40,9 @@ def deserialize(data: str) -> Optional[TreeNode]:
     return root
 
 
-class Test(TestCase):
-    data = "1,2,3,null,null,4,5"
-    root = TreeNode(1)
-    root.left = TreeNode(2)
-    root.right = TreeNode(3)
-    root.right.left = TreeNode(4)
-    root.right.right = TreeNode(5)
-
-    def test_codec(self):
-        self.assertEqual(deserialize(self.data), self.root)
-
-    def test_serialize(self):
-        self.assertEqual(serialize(self.root), self.data)
-
-    def test_serialize_2(self):
-        root = TreeNode(1)
-        root.left = TreeNode(2)
-        root.left.left = TreeNode(3)
-        root.left.left.left = TreeNode(4)
-        root.left.left.left.left = TreeNode(5)
-        self.assertEqual(deserialize(serialize(root)), root)
+test(deserialize, [
+    ("1,2,3,null,null,4,5", new_tree(1, 2, 3, None, None, 4, 5))
+])
+test(serialize, [
+    (new_tree(1, 2, 3, None, None, 4, 5), "1,2,3,null,null,4,5"),
+])

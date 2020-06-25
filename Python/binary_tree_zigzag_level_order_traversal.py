@@ -1,7 +1,6 @@
 from typing import List
-from unittest import TestCase
 
-from tree import TreeNode
+from leetcode import test, new_tree, TreeNode
 
 
 def zigzag_level_order(root: TreeNode) -> List[List[int]]:
@@ -30,14 +29,6 @@ def zigzag_level_order(root: TreeNode) -> List[List[int]]:
     return result
 
 
-class Test(TestCase):
-    def test_zigzag_level_order(self):
-        root = TreeNode(3)
-        root.left = TreeNode(9)
-        root.right = TreeNode(20)
-        root.right.left = TreeNode(15)
-        root.right.right = TreeNode(7)
-        expected = [[3], [20, 9], [15, 7]]
-
-        output = zigzag_level_order(root)
-        self.assertEqual(output, expected)
+test(zigzag_level_order, [
+    (new_tree(3, 9, 20, None, None, 15, 7), [[3], [20, 9], [15, 7]])
+])
