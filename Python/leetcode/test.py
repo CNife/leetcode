@@ -10,7 +10,7 @@ def test(function, test_cases, map_func=None, eq_func=None):
         if (eq_func and not eq_func(actual, expect)) or actual != expect:
             print(f'Test failed\n'
                   f'\tfunction: {function!r}\n'
-                  f'\targs: {args}\n'
+                  f'\targs: {", ".join(map(lambda arg: str(arg), args))}\n'
                   f'\tactual: {actual}\n'
                   f'\texpect: {expect}', file=sys.stderr)
             exit(1)
