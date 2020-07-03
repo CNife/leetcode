@@ -42,3 +42,30 @@ def new_tree(*nums: Optional[int]) -> Optional[TreeNode]:
                 queue.append(node.right)
             i += 1
     return root
+
+
+def is_valid_bst(root: TreeNode) -> bool:
+    if not root:
+        return True
+    if root.left and root.left.val > root.val:
+        return False
+    if root.right and root.right.val < root.val:
+        return False
+    return is_valid_bst(root.left) and is_valid_bst(root.right)
+
+
+def height(root: TreeNode) -> int:
+    if not root:
+        return 0
+    left_height = height(root.left)
+    right_height = height(root.right)
+    root.height = max(left_height, right_height) + 1
+    return root.height
+
+
+def is_valid_avl(root: TreeNode) -> bool:
+    if not root:
+        return True
+    if not is_valid_bst(root):
+        return False
+    return abs(height(root.left) - height(root.right)) <= 1
