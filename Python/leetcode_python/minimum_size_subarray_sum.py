@@ -1,7 +1,7 @@
 import bisect
 from typing import List
 
-from leetcode import test
+from leetcode_python import test
 
 
 def min_subarray_len(nums: List[int], target: int) -> int:
@@ -18,7 +18,10 @@ def min_subarray_len(nums: List[int], target: int) -> int:
     return 0 if result == float('Infinity') else result
 
 
-test(min_subarray_len, [
-    ([2, 3, 1, 2, 4, 3], 7, 2),
-    ([], 100, 0)
-])
+test(
+    min_subarray_len,
+    [
+        ([2, 3, 1, 2, 4, 3], 7, 2),
+        ([], 100, 0)
+    ]
+)

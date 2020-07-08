@@ -1,4 +1,4 @@
-from leetcode import test
+from leetcode_python import test
 
 
 def match(s: str, p: str) -> bool:

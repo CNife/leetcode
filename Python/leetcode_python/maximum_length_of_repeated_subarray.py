@@ -1,6 +1,6 @@
 from typing import List
 
-from leetcode import test
+from leetcode_python import test
 
 
 def find_length(a: List[int], b: List[int]) -> int:
@@ -16,6 +16,9 @@ def find_length(a: List[int], b: List[int]) -> int:
     return result
 
 
-test(find_length, [
-    ([1, 2, 3, 2, 1], [3, 2, 1, 4, 7], 3)
-])
+test(
+    find_length,
+    [
+        ([1, 2, 3, 2, 1], [3, 2, 1, 4, 7], 3)
+    ]
+)

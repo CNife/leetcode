@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from leetcode import TreeNode, test, is_valid_avl
+from leetcode_python import TreeNode, test, is_valid_avl
 
 
 def sorted_array_to_bst(nums: List[int]) -> Optional[TreeNode]:

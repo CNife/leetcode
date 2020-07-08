@@ -1,7 +1,7 @@
 import heapq
 from typing import List
 
-from leetcode import test
+from leetcode_python import test
 
 
 def kth_smallest(matrix: List[List[int]], k: int) -> int:
@@ -14,6 +14,9 @@ def kth_smallest(matrix: List[List[int]], k: int) -> int:
     return heap[0]
 
 
-test(kth_smallest, [
-    ([[1, 5, 9], [10, 11, 13], [12, 13, 15]], 8, 13)
-])
+test(
+    kth_smallest,
+    [
+        ([[1, 5, 9], [10, 11, 13], [12, 13, 15]], 8, 13)
+    ]
+)

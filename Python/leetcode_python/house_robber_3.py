@@ -1,4 +1,4 @@
-from leetcode import test, TreeNode, new_tree
+from leetcode_python import test, TreeNode, new_tree
 
 
 def rob(root: TreeNode) -> int:
@@ -13,6 +13,9 @@ def rob(root: TreeNode) -> int:
     return helper(root)[0]
 
 
-test(rob, [
-    (new_tree(3, 4, 5, 1, 3, None, 1), 9)
-])
+test(
+    rob,
+    [
+        (new_tree(3, 4, 5, 1, 3, None, 1), 9)
+    ]
+)

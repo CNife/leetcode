@@ -1,6 +1,6 @@
 from typing import Optional
 
-from leetcode import ListNode, new_list, test
+from leetcode_python import ListNode, new_list, test
 
 
 def odd_even_list(head: Optional[ListNode]) -> Optional[ListNode]:
@@ -27,7 +27,10 @@ def odd_even_list(head: Optional[ListNode]) -> Optional[ListNode]:
     return head
 
 
-test(odd_even_list, [
-    (new_list(1, 2, 3, 4, 5), new_list(1, 3, 5, 2, 4)),
-    (new_list(2, 1, 3, 5, 6, 4, 7), new_list(2, 3, 6, 7, 1, 5, 4))
-])
+test(
+    odd_even_list,
+    [
+        (new_list(1, 2, 3, 4, 5), new_list(1, 3, 5, 2, 4)),
+        (new_list(2, 1, 3, 5, 6, 4, 7), new_list(2, 3, 6, 7, 1, 5, 4))
+    ]
+)

@@ -2,7 +2,7 @@ from collections import namedtuple
 from heapq import heappush, heapreplace, heappop
 from typing import List, Optional
 
-from leetcode import ListNode, new_list, test
+from leetcode_python import ListNode, new_list, test
 
 
 def merge_k_lists(lists: List[Optional[ListNode]]) -> Optional[ListNode]:
@@ -34,7 +34,10 @@ def cmp_list_node_lt(lhs, rhs):
 CmpListNode.__slots__ = ()
 CmpListNode.__lt__ = cmp_list_node_lt
 
-test(merge_k_lists, [
-    ([new_list(1, 4, 5), new_list(1, 3, 4), new_list(2, 6)],
-     new_list(1, 1, 2, 3, 4, 4, 5, 6))
-])
+test(
+    merge_k_lists,
+    [
+        ([new_list(1, 4, 5), new_list(1, 3, 4), new_list(2, 6)],
+         new_list(1, 1, 2, 3, 4, 4, 5, 6))
+    ]
+)

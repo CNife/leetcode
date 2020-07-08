@@ -1,4 +1,4 @@
-from leetcode import TreeNode, test, new_tree
+from leetcode_python import TreeNode, test, new_tree
 
 
 def has_path_sum(root: TreeNode, target: int) -> bool:

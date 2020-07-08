@@ -1,6 +1,6 @@
 from typing import List
 
-from leetcode import test, new_tree, TreeNode
+from leetcode_python import test, new_tree, TreeNode
 
 
 def zigzag_level_order(root: TreeNode) -> List[List[int]]:
@@ -29,6 +29,9 @@ def zigzag_level_order(root: TreeNode) -> List[List[int]]:
     return result
 
 
-test(zigzag_level_order, [
-    (new_tree(3, 9, 20, None, None, 15, 7), [[3], [20, 9], [15, 7]])
-])
+test(
+    zigzag_level_order,
+    [
+        (new_tree(3, 9, 20, None, None, 15, 7), [[3], [20, 9], [15, 7]])
+    ]
+)

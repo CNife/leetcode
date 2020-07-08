@@ -1,6 +1,6 @@
 from typing import List
 
-from leetcode import test
+from leetcode_python import test
 
 
 def merge(a: List[int], m: int, b: List[int], n: int) -> None:
@@ -16,6 +16,10 @@ def merge(a: List[int], m: int, b: List[int], n: int) -> None:
             j -= 1
 
 
-test(merge, [
-    ([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3, [1, 2, 2, 3, 5, 6])
-], get_func=lambda t: t[0])
+test(
+    merge,
+    [
+        ([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3, [1, 2, 2, 3, 5, 6])
+    ],
+    get_func=lambda t: t[0]
+)

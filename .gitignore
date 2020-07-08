@@ -11,4 +11,6 @@
 /c/main.c
 /cpp/main.cpp
 
-go/pkg/
+/go/pkg/
+
+/Python/dist/

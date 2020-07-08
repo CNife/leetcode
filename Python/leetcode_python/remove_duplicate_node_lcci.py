@@ -1,4 +1,4 @@
-from leetcode import ListNode, test, new_list
+from leetcode_python import ListNode, test, new_list
 
 
 def remove_duplicate_nodes(head: ListNode) -> ListNode:
@@ -14,7 +14,10 @@ def remove_duplicate_nodes(head: ListNode) -> ListNode:
     return head
 
 
-test(remove_duplicate_nodes, [
-    (new_list(1, 2, 3, 3, 2, 1), new_list(1, 2, 3)),
-    (new_list(1, 1, 1, 2), new_list(1, 2))
-])
+test(
+    remove_duplicate_nodes,
+    [
+        (new_list(1, 2, 3, 3, 2, 1), new_list(1, 2, 3)),
+        (new_list(1, 1, 1, 2), new_list(1, 2))
+    ]
+)

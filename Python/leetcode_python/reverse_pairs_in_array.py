@@ -1,6 +1,6 @@
 from typing import List
 
-from leetcode import test
+from leetcode_python import test
 
 
 def reverse_pairs(nums: List[int]) -> int:

@@ -1,6 +1,6 @@
 from typing import List
 
-from leetcode import test
+from leetcode_python import test
 
 
 def word_break(s: str, word_dict: List[str]) -> bool:
@@ -15,7 +15,10 @@ def word_break(s: str, word_dict: List[str]) -> bool:
 
 
 # noinspection SpellCheckingInspection
-test(word_break, [
-    ("leetcode", ["leet", "code"], True),
-    ("applepenapple", ["apple", "pen"], True)
-])
+test(
+    word_break,
+    [
+        ("prelude", ["leet", "code"], True),
+        ("applepenapple", ["apple", "pen"], True)
+    ]
+)
