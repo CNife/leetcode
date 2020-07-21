@@ -1,5 +1,7 @@
 package types
 
+import "strconv"
+
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
@@ -35,4 +37,12 @@ func NewTree(values ...int) *TreeNode {
 		}
 	}
 	return root
+}
+
+func (tree *TreeNode) String() string {
+	if tree == nil {
+		return ""
+	} else {
+		return "(" + strconv.Itoa(tree.Val) + "," + tree.Left.String() + "," + tree.Right.String() + ")"
+	}
 }
