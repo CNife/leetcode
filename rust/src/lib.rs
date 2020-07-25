@@ -1,4 +1,4 @@
-pub mod two_sum_2_input_array_is_sorted;
+pub mod split_array_largest_sum;
 
 #[cfg(test)]
 pub mod utils;
