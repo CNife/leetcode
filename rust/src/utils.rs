@@ -1,37 +1,25 @@
-use std::collections::{BTreeSet, HashSet};
 use std::fmt::Debug;
-use std::hash::Hash;
-use std::iter::FromIterator;
 
-pub fn sv(sv: Vec<&str>) -> Vec<String> {
-    sv.into_iter().map(|s| s.to_string()).collect()
-}
-
-pub fn svv(svv: Vec<Vec<&str>>) -> Vec<Vec<String>> {
-    svv.into_iter().map(sv).collect()
-}
-
-pub fn s<T>(v: Vec<T>) -> HashSet<T>
+pub fn v<F, T>(src: Vec<F>) -> Vec<T>
 where
-    T: Eq + Hash,
+    F: Into<T>,
 {
-    HashSet::from_iter(v.into_iter())
+    src.into_iter().map(|item| item.into()).collect()
 }
 
-pub fn ss<T>(v: Vec<Vec<T>>) -> BTreeSet<BTreeSet<T>>
+pub fn vv<F, T>(src: Vec<Vec<F>>) -> Vec<Vec<T>>
 where
-    T: Ord,
+    F: Into<T>,
 {
-    v.into_iter()
-        .map(|inner| inner.into_iter().collect::<BTreeSet<_>>())
-        .collect()
+    src.into_iter().map(v).collect()
 }
 
-pub fn assert_same_set<T>(mut output: Vec<T>, mut expected: Vec<T>)
+pub fn assert_same_set<Lhs, Rhs>(mut output: Vec<Lhs>, want: Vec<Rhs>)
 where
-    T: Ord + Debug,
+    Lhs: From<Rhs> + Ord + Debug,
 {
+    let mut want: Vec<Lhs> = want.into_iter().map(|item| item.into()).collect();
     output.sort_unstable();
-    expected.sort_unstable();
-    assert_eq!(output, expected);
+    want.sort_unstable();
+    assert_eq!(output, want);
 }
