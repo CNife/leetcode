@@ -66,6 +66,7 @@ mod heaters;
 mod house_robber;
 mod house_robber_2;
 mod image_smoother;
+mod integer_break;
 mod intersection_of_three_sorted_arrays;
 mod is_subsequence;
 mod island_perimeter;
