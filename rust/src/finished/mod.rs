@@ -94,6 +94,7 @@ mod longest_palindromic_substring;
 mod longest_substring_with_at_least_k_repeating_characters;
 mod longest_substring_without_repeating_characters;
 mod longest_word_in_dictionary;
+mod magic_index_lcci;
 mod majority_element;
 mod matrix_01;
 mod matrix_cells_in_distance_order;

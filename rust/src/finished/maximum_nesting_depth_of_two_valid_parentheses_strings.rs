@@ -29,7 +29,7 @@ fn test() {
                     rhs_depth = max(rhs_depth, rhs_counter);
                 }
                 (b')', 1) => {
-                    rhs_counter += 1;
+                    rhs_counter -= 1;
                     rhs_depth = max(rhs_depth, -rhs_counter);
                 }
                 _ => unreachable!(),
