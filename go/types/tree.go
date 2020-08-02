@@ -46,3 +46,15 @@ func (tree *TreeNode) String() string {
 		return "(" + strconv.Itoa(tree.Val) + "," + tree.Left.String() + "," + tree.Right.String() + ")"
 	}
 }
+
+func (tree *TreeNode) DeepClone() *TreeNode {
+	if tree == nil {
+		return nil
+	} else {
+		return &TreeNode{
+			Val:   tree.Val,
+			Left:  tree.Left.DeepClone(),
+			Right: tree.Right.DeepClone(),
+		}
+	}
+}
