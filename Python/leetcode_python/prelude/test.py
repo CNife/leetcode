@@ -1,7 +1,15 @@
 import sys
 
+from typing import Callable, List, Tuple
 
-def test(function, test_cases, get_func=None, map_func=None, eq_func=None):
+
+def test(
+        function: Callable,
+        test_cases: List[Tuple],
+        get_func: Callable = None,
+        map_func: Callable = None,
+        eq_func: Callable = None
+):
     for test_case in test_cases:
         args, expect = test_case[:-1], test_case[-1]
         actual = function(*args)
@@ -13,7 +21,7 @@ def test(function, test_cases, get_func=None, map_func=None, eq_func=None):
                        f'actual: {actual}\n'
                        f'expect: {expect}\n')
             print(message, file=sys.stderr)
-            exit(1)
+            sys.exit(1)
 
         if get_func:
             actual = get_func(test_case)

@@ -18,7 +18,7 @@ def word_break(s: str, word_dict: List[str]) -> bool:
 test(
     word_break,
     [
-        ("prelude", ["leet", "code"], True),
+        ("leetcode", ["leet", "code"], True),
         ("applepenapple", ["apple", "pen"], True)
     ]
 )
