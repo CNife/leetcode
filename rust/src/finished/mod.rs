@@ -163,6 +163,7 @@ mod shortest_completing_word;
 mod shortest_distance_to_a_character;
 mod simplify_path;
 mod sliding_window_maximum;
+mod smallest_range_covering_elements_from_k_lists;
 mod smallest_range_i;
 mod sort_an_array;
 mod spiral_order;
