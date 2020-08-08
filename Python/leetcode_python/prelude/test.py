@@ -6,7 +6,8 @@ from typing import Callable, List, Tuple
 def test(
         function: Callable,
         test_cases: List[Tuple],
-        get_func: Callable = None,
+        *,
+        actual_func: Callable = None,
         map_func: Callable = None,
         eq_func: Callable = None
 ):
@@ -23,8 +24,8 @@ def test(
             print(message, file=sys.stderr)
             sys.exit(1)
 
-        if get_func:
-            actual = get_func(test_case)
+        if actual_func:
+            actual = actual_func(test_case)
         if map_func:
             actual, expect = map_func(actual), map_func(expect)
         if eq_func:
