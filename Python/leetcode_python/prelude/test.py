@@ -1,6 +1,6 @@
 import sys
 
-from typing import Callable, List, Tuple
+from typing import Callable, List, Tuple, TypeVar
 
 
 def test(
@@ -35,3 +35,11 @@ def test(
             error()
 
     print(f'Test for {function.__name__} passed')
+
+
+T = TypeVar('T')
+
+
+def sorted_list(src: List[T], **kwargs) -> List[T]:
+    src.sort(**kwargs)
+    return src
