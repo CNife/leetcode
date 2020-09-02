@@ -172,6 +172,7 @@ mod split_array_largest_sum;
 mod sqrtx;
 mod str_without3a3b;
 mod string_compression;
+mod string_is_number;
 mod string_to_integer_atoi;
 mod subarray_sum_equals_k;
 mod subarray_sums_divisible_by_k;
