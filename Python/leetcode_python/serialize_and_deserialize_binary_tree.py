@@ -12,15 +12,16 @@ def serialize(root: TreeNode) -> str:
             queue.extend([node.left, node.right])
             result.append(str(node.val))
         else:
-            result.append('null')
-    while result and result[-1] == 'null':
+            result.append("null")
+    while result and result[-1] == "null":
         result.pop()
-    return ','.join(result)
+    return ",".join(result)
 
 
 def deserialize(data: str) -> Optional[TreeNode]:
-    nodes = map(lambda t: None if t in ('null', '') else TreeNode(int(t)),
-                data.split(','))
+    nodes = map(
+        lambda t: None if t in ("null", "") else TreeNode(int(t)), data.split(",")
+    )
     root = next(nodes)
     if root is None:
         return None
@@ -40,15 +41,5 @@ def deserialize(data: str) -> Optional[TreeNode]:
     return root
 
 
-test(
-    deserialize,
-    [
-        ("1,2,3,null,null,4,5", new_tree(1, 2, 3, None, None, 4, 5))
-    ]
-)
-test(
-    serialize,
-    [
-        (new_tree(1, 2, 3, None, None, 4, 5), "1,2,3,null,null,4,5"),
-    ]
-)
+test(deserialize, [("1,2,3,null,null,4,5", new_tree(1, 2, 3, None, None, 4, 5))])
+test(serialize, [(new_tree(1, 2, 3, None, None, 4, 5), "1,2,3,null,null,4,5"),])

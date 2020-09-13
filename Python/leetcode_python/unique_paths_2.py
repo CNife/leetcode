@@ -61,9 +61,4 @@ def unique_paths_with_obstacles(grid: List[List[int]]) -> int:
 #     return dp[m - 1][n - 1]
 
 
-test(
-    unique_paths_with_obstacles,
-    [
-        ([[0, 0, 0], [0, 1, 0], [0, 0, 0]], 2)
-    ]
-)
+test(unique_paths_with_obstacles, [([[0, 0, 0], [0, 1, 0], [0, 0, 0]], 2)])

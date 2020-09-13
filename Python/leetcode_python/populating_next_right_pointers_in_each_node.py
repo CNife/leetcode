@@ -3,21 +3,25 @@ from unittest import TestCase
 
 
 class Node:
-    def __init__(self,
-                 val: int = 0,
-                 left: 'Node' = None,
-                 right: 'Node' = None,
-                 next_node: 'Node' = None):
+    def __init__(
+        self,
+        val: int = 0,
+        left: "Node" = None,
+        right: "Node" = None,
+        next_node: "Node" = None,
+    ):
         self.val = val
         self.left = left
         self.right = right
         self.next_node = next_node
 
     def __repr__(self):
-        return f'Node(val: {self.val}, ' \
-               f'left: {self.left}, ' \
-               f'right: {self.right}, ' \
-               f'next: {self.next_node})'
+        return (
+            f"Node(val: {self.val}, "
+            f"left: {self.left}, "
+            f"right: {self.right}, "
+            f"next: {self.next_node})"
+        )
 
 
 def connect(root: Optional[Node]) -> Optional[Node]:

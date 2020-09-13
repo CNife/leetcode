@@ -7,10 +7,4 @@ def range_bitwise_and(m: int, n: int) -> int:
             return m & (-1 << i)
 
 
-test(
-    range_bitwise_and,
-    [
-        (5, 7, 4),
-        (0, 1, 0),
-    ]
-)
+test(range_bitwise_and, [(5, 7, 4), (0, 1, 0),])

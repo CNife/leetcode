@@ -23,8 +23,8 @@ def reverse_pairs(nums: List[int]) -> int:
         buf = nums[start:end]
         i, j = 0, mid - start
         for k in range(start, end):
-            lhs = buf[i] if i < length // 2 else float('inf')
-            rhs = buf[j] if j < length else float('inf')
+            lhs = buf[i] if i < length // 2 else float("inf")
+            rhs = buf[j] if j < length else float("inf")
             if lhs <= rhs:
                 nums[k] = lhs
                 i += 1
@@ -37,9 +37,4 @@ def reverse_pairs(nums: List[int]) -> int:
     return result
 
 
-test(
-    reverse_pairs,
-    [
-        ([7, 5, 6, 4], 5),
-    ]
-)
+test(reverse_pairs, [([7, 5, 6, 4], 5),])

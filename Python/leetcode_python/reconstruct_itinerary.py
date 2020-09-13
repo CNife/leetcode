@@ -24,7 +24,7 @@ def find_itinerary(tickets: List[List[int]]) -> List[str]:
             visit(dest)
         result.append(src)
 
-    visit('JFK')
+    visit("JFK")
     result.reverse()
     return result
 
@@ -32,10 +32,19 @@ def find_itinerary(tickets: List[List[int]]) -> List[str]:
 test(
     find_itinerary,
     [
-        ([['MUC', 'LHR'], ['JFK', 'MUC'], ['SFO', 'SJC'], ['LHR', 'SFO']],
-         ['JFK', 'MUC', 'LHR', 'SFO', 'SJC']),
-        ([['JFK', 'SFO'], ['JFK', 'ATL'], ['SFO', 'ATL'], ['ATL', 'JFK'],
-          ['ATL', 'SFO']],
-         ['JFK', 'ATL', 'JFK', 'SFO', 'ATL', 'SFO']),
-    ]
+        (
+            [["MUC", "LHR"], ["JFK", "MUC"], ["SFO", "SJC"], ["LHR", "SFO"]],
+            ["JFK", "MUC", "LHR", "SFO", "SJC"],
+        ),
+        (
+            [
+                ["JFK", "SFO"],
+                ["JFK", "ATL"],
+                ["SFO", "ATL"],
+                ["ATL", "JFK"],
+                ["ATL", "SFO"],
+            ],
+            ["JFK", "ATL", "JFK", "SFO", "ATL", "SFO"],
+        ),
+    ],
 )

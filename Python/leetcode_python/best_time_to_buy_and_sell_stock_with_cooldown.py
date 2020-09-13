@@ -4,7 +4,7 @@ from leetcode_python import test
 
 
 def max_profit(prices: List[int]) -> int:
-    rest, hold, sold = 0, float('-inf'), 0
+    rest, hold, sold = 0, float("-inf"), 0
     for price in prices:
         old_sold = sold
         sold = hold + price
@@ -13,9 +13,4 @@ def max_profit(prices: List[int]) -> int:
     return max(rest, sold)
 
 
-test(
-    max_profit,
-    [
-        ([1, 2, 3, 0, 2], 3),
-    ]
-)
+test(max_profit, [([1, 2, 3, 0, 2], 3),])

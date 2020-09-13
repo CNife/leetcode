@@ -29,9 +29,11 @@ class NQueensSolver:
                 self.remove_queen(r, c)
 
     def could_place(self, r: int, c: int) -> bool:
-        return not (self.columns[c]
-                    or self.diagonals[self.diagonal(r, c)]
-                    or self.rev_diagonals[self.rev_diagonal(r, c)])
+        return not (
+            self.columns[c]
+            or self.diagonals[self.diagonal(r, c)]
+            or self.rev_diagonals[self.rev_diagonal(r, c)]
+        )
 
     def place_queen(self, r: int, c: int) -> None:
         self.queens.append((r, c))
@@ -46,10 +48,10 @@ class NQueensSolver:
         self.rev_diagonals[self.rev_diagonal(r, c)] = False
 
     def add_result(self) -> None:
-        result = [['.'] * self.n for _ in range(self.n)]
+        result = [["."] * self.n for _ in range(self.n)]
         for r, c in self.queens:
-            result[r][c] = 'Q'
-        self.results.append([''.join(row) for row in result])
+            result[r][c] = "Q"
+        self.results.append(["".join(row) for row in result])
 
     # noinspection PyMethodMayBeStatic
     def diagonal(self, r: int, c: int) -> int:
@@ -64,17 +66,6 @@ class NQueensSolver:
 
 test(
     solve_n_queens,
-    [
-        (4,
-         [[".Q..",
-           "...Q",
-           "Q...",
-           "..Q."],
-          ["..Q.",
-           "Q...",
-           "...Q",
-           ".Q.."]]
-         ),
-    ],
+    [(4, [[".Q..", "...Q", "Q...", "..Q."], ["..Q.", "Q...", "...Q", ".Q.."]]),],
     map_func=sorted_list,
 )

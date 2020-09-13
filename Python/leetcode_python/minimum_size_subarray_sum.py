@@ -6,7 +6,7 @@ from leetcode_python import test
 
 def min_subarray_len(nums: List[int], target: int) -> int:
     prefix_sums = []
-    result = float('Infinity')
+    result = float("Infinity")
     prefix_sum = 0
     for i, num in enumerate(nums):
         prefix_sum += num
@@ -15,13 +15,7 @@ def min_subarray_len(nums: List[int], target: int) -> int:
         if diff >= 0:
             j = bisect.bisect_right(prefix_sums, diff)
             result = min(result, i - j + 1)
-    return 0 if result == float('Infinity') else result
+    return 0 if result == float("Infinity") else result
 
 
-test(
-    min_subarray_len,
-    [
-        ([2, 3, 1, 2, 4, 3], 7, 2),
-        ([], 100, 0)
-    ]
-)
+test(min_subarray_len, [([2, 3, 1, 2, 4, 3], 7, 2), ([], 100, 0)])

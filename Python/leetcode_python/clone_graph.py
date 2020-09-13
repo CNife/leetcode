@@ -2,12 +2,12 @@ from typing import List, Dict, Optional
 
 
 class Node:
-    def __init__(self, val: int = 0, neighbors: List['Node'] = None):
+    def __init__(self, val: int = 0, neighbors: List["Node"] = None):
         self.val = val
         self.neighbors = neighbors if neighbors else []
 
     def __repr__(self) -> str:
-        return f'Node({self.val}, {len(self.neighbors)} neighbors)'
+        return f"Node({self.val}, {len(self.neighbors)} neighbors)"
 
 
 def clone_graph(node: Optional[Node]) -> Optional[Node]:

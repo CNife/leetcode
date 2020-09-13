@@ -4,8 +4,9 @@ from typing import List, Tuple, Deque
 from leetcode_python import test
 
 
-def flood_fill(image: List[List[int]], src_x: int, src_y: int,
-               new_color: int) -> List[List[int]]:
+def flood_fill(
+    image: List[List[int]], src_x: int, src_y: int, new_color: int
+) -> List[List[int]]:
 
     m, n = len(image), len(image[0])
 
@@ -31,8 +32,5 @@ def flood_fill(image: List[List[int]], src_x: int, src_y: int,
 
 test(
     flood_fill,
-    [
-        ([[1, 1, 1], [1, 1, 0], [1, 0, 1]], 1, 1, 2,
-         [[2, 2, 2], [2, 2, 0], [2, 0, 1]]),
-    ]
+    [([[1, 1, 1], [1, 1, 0], [1, 0, 1]], 1, 1, 2, [[2, 2, 2], [2, 2, 0], [2, 0, 1]]),],
 )

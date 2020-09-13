@@ -5,7 +5,7 @@ def longest_valid_parentheses(s: str) -> int:
     stack = [-1]
     result = 0
     for i, c in enumerate(s):
-        if c == '(':
+        if c == "(":
             stack.append(i)
         else:
             stack.pop()
@@ -17,10 +17,4 @@ def longest_valid_parentheses(s: str) -> int:
     return result
 
 
-test(
-    longest_valid_parentheses,
-    [
-        ('(()', 2),
-        (')()())', 4),
-    ]
-)
+test(longest_valid_parentheses, [("(()", 2), (")()())", 4),])

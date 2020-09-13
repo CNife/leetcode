@@ -16,18 +16,12 @@ def predicate_the_winner(nums: List[int]) -> bool:
             if left == right:
                 dp[left][right] = nums[left - 1]
             else:
-                dp[left][right] = (range_sum(left, right)
-                                   - min(dfs(left + 1, right),
-                                         dfs(left, right - 1)))
+                dp[left][right] = range_sum(left, right) - min(
+                    dfs(left + 1, right), dfs(left, right - 1)
+                )
         return dp[left][right]
 
     return dfs(1, len(nums)) * 2 >= range_sum(1, len(nums))
 
 
-test(
-    predicate_the_winner,
-    [
-        ([1, 5, 2], False),
-        ([1, 5, 233, 7], True),
-    ]
-)
+test(predicate_the_winner, [([1, 5, 2], False), ([1, 5, 233, 7], True),])

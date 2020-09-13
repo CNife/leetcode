@@ -12,7 +12,7 @@ def word_break(s: str, words: List[str]) -> List[str]:
         nonlocal s, words
         results = []
         if start == len(s):
-            results.append('')
+            results.append("")
         for end in range(start + 1, len(s) + 1):
             left_part = s[start:end]
             if left_part in words:
@@ -20,7 +20,7 @@ def word_break(s: str, words: List[str]) -> List[str]:
                 for right_part in right_parts:
                     result = left_part
                     if len(right_part) > 0:
-                        result += ' ' + right_part
+                        result += " " + right_part
                     results.append(result)
         return results
 
@@ -32,21 +32,16 @@ test(
     word_break,
     [
         (
-            'catsanddog',
-            ['cat', 'cats', 'and', 'sand', 'dog'],
-            ['cats and dog', 'cat sand dog']
+            "catsanddog",
+            ["cat", "cats", "and", "sand", "dog"],
+            ["cats and dog", "cat sand dog"],
         ),
         (
-            'pineapplepenapple',
-            ['apple', 'pen', 'applepen', 'pine', 'pineapple'],
-            ['pine apple pen apple', 'pineapple pen apple',
-             'pine applepen apple']
+            "pineapplepenapple",
+            ["apple", "pen", "applepen", "pine", "pineapple"],
+            ["pine apple pen apple", "pineapple pen apple", "pine applepen apple"],
         ),
-        (
-            'catsandog',
-            ['cats', 'dog', 'sand', 'and', 'cat'],
-            []
-        ),
+        ("catsandog", ["cats", "dog", "sand", "and", "cat"], []),
     ],
-    map_func=lambda l: set(l)
+    map_func=lambda l: set(l),
 )

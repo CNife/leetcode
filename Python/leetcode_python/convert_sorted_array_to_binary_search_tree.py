@@ -10,14 +10,12 @@ def sorted_array_to_bst(nums: List[int]) -> Optional[TreeNode]:
     middle = len(nums) // 2
     root = TreeNode(nums[middle])
     root.left = sorted_array_to_bst(nums[:middle])
-    root.right = sorted_array_to_bst(nums[middle + 1:])
+    root.right = sorted_array_to_bst(nums[middle + 1 :])
     return root
 
 
 test(
     sorted_array_to_bst,
-    [
-        ([-10, -3, 0, 5, 9], None),
-    ],
+    [([-10, -3, 0, 5, 9], None),],
     eq_func=lambda root, _: is_valid_avl(root),
 )

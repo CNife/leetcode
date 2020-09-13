@@ -9,7 +9,7 @@ class BrowserHistory:
     def visit(self, url: str) -> None:
         if self.pointer < len(self.stack) - 1:
             self.stack[self.pointer + 1] = url
-            del self.stack[self.pointer + 2:]
+            del self.stack[self.pointer + 2 :]
         else:
             self.stack.append(url)
         self.pointer += 1
@@ -25,14 +25,14 @@ class BrowserHistory:
         return self.stack[forward_pointer]
 
 
-b = BrowserHistory('leetcode.com')
-b.visit('google.com')
-b.visit('facebook.com')
-b.visit('youtube.com')
-assert b.back(1) == 'facebook.com'
-assert b.back(1) == 'google.com'
-assert b.forward(1) == 'facebook.com'
-b.visit('linkedin.com')
-assert b.forward(2) == 'linkedin.com'
-assert b.back(2) == 'google.com'
-assert b.back(7) == 'leetcode.com'
+b = BrowserHistory("leetcode.com")
+b.visit("google.com")
+b.visit("facebook.com")
+b.visit("youtube.com")
+assert b.back(1) == "facebook.com"
+assert b.back(1) == "google.com"
+assert b.forward(1) == "facebook.com"
+b.visit("linkedin.com")
+assert b.forward(2) == "linkedin.com"
+assert b.back(2) == "google.com"
+assert b.back(7) == "leetcode.com"

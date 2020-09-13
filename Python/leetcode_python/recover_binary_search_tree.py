@@ -5,7 +5,7 @@ def recover_tree(root: TreeNode) -> None:
     if not root:
         return
 
-    prev = TreeNode(-2 ** 31 - 1)
+    prev = TreeNode(-(2 ** 31) - 1)
     first_error, second_error = None, None
 
     def inorder(node: TreeNode) -> None:
@@ -31,5 +31,5 @@ test(
         (new_tree(3, 1, 4, None, None, 2), new_tree(2, 1, 4, None, None, 3)),
         (new_tree(5, 3, 9, -2147483648, 2), new_tree(5, 2, 9, -2147483648, 3)),
     ],
-    actual_func=lambda t: t[0]
+    actual_func=lambda t: t[0],
 )

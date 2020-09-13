@@ -53,8 +53,8 @@ class SkipList:
 @dataclass
 class Node:
     val: int
-    right: Optional['Node']
-    down: Optional['Node']
+    right: Optional["Node"]
+    down: Optional["Node"]
 
 
 sl = SkipList()

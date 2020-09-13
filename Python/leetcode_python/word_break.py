@@ -17,8 +17,5 @@ def word_break(s: str, word_dict: List[str]) -> bool:
 # noinspection SpellCheckingInspection
 test(
     word_break,
-    [
-        ("leetcode", ["leet", "code"], True),
-        ("applepenapple", ["apple", "pen"], True)
-    ]
+    [("leetcode", ["leet", "code"], True), ("applepenapple", ["apple", "pen"], True)],
 )

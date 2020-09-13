@@ -25,10 +25,4 @@ def count_substrings(s: str) -> int:
     return count_odd() + count_even()
 
 
-test(
-    count_substrings,
-    [
-        ('abc', 3),
-        ('aaa', 6),
-    ]
-)
+test(count_substrings, [("abc", 3), ("aaa", 6),])

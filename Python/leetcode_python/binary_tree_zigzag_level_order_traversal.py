@@ -31,7 +31,5 @@ def zigzag_level_order(root: TreeNode) -> List[List[int]]:
 
 test(
     zigzag_level_order,
-    [
-        (new_tree(3, 9, 20, None, None, 15, 7), [[3], [20, 9], [15, 7]])
-    ]
+    [(new_tree(3, 9, 20, None, None, 15, 7), [[3], [20, 9], [15, 7]])],
 )

@@ -9,16 +9,18 @@ class TreeNode:
         self.right: Optional[TreeNode] = None
 
     def __eq__(self, other: object) -> bool:
-        return isinstance(other, TreeNode) \
-               and self.val == other.val \
-               and self.left == other.left \
-               and self.right == other.right
+        return (
+            isinstance(other, TreeNode)
+            and self.val == other.val
+            and self.left == other.left
+            and self.right == other.right
+        )
 
     def __str__(self) -> str:
-        return f'({self.val} {self.left} {self.right})'
+        return f"({self.val} {self.left} {self.right})"
 
     def __repr__(self) -> str:
-        return f'TreeNode(val={self.val}, left={self.left}, right={self.right})'
+        return f"TreeNode(val={self.val}, left={self.left}, right={self.right})"
 
 
 def new_tree(*nums: Optional[int]) -> Optional[TreeNode]:

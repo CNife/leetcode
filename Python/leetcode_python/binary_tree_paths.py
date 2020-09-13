@@ -23,13 +23,11 @@ def binary_tree_path(root: TreeNode) -> List[str]:
         stack.pop()
 
     helper(root)
-    return ['->'.join(str(val) for val in result) for result in results]
+    return ["->".join(str(val) for val in result) for result in results]
 
 
 test(
     binary_tree_path,
-    [
-        (new_tree(1, 2, 3, None, 5), ['1->2->5', '1->3']),
-    ],
+    [(new_tree(1, 2, 3, None, 5), ["1->2->5", "1->3"]),],
     map_func=sorted_list,
 )

@@ -7,9 +7,11 @@ def is_same_tree(lhs: TreeNode, rhs: TreeNode) -> bool:
     elif rhs is None:
         return False
     else:
-        return (lhs.val == rhs.val
-                and is_same_tree(lhs.left, rhs.left)
-                and is_same_tree(lhs.right, rhs.right))
+        return (
+            lhs.val == rhs.val
+            and is_same_tree(lhs.left, rhs.left)
+            and is_same_tree(lhs.right, rhs.right)
+        )
 
 
 test(
@@ -18,5 +20,5 @@ test(
         (new_tree(1, 2, 3), new_tree(1, 2, 3), True),
         (new_tree(1, None, 2), new_tree(1, 2), False),
         (new_tree(1, 2, 1), new_tree(1, 1, 2), False),
-    ]
+    ],
 )
