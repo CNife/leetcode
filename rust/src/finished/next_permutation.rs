@@ -4,9 +4,7 @@ pub fn next_permutation(nums: &mut Vec<i32>) {
             nums.reverse();
         }
         Some(m) => {
-            let n = (m + 1..=nums.len() - 1)
-                .rfind(|&i| nums[i] > nums[m])
-                .unwrap();
+            let n = (m + 1..nums.len()).rfind(|&i| nums[i] > nums[m]).unwrap();
             nums.swap(m, n);
             nums[m + 1..].reverse();
         }

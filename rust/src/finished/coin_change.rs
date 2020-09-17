@@ -38,7 +38,7 @@
 //     }
 // }
 
-use std::cmp::min;
+use std::cmp::{min, Reverse};
 
 pub fn coin_change(coins: Vec<i32>, amount: i32) -> i32 {
     if amount == 0 {
@@ -50,7 +50,7 @@ pub fn coin_change(coins: Vec<i32>, amount: i32) -> i32 {
         .filter(|n| *n <= amount)
         .map(|n| n as usize)
         .collect();
-    coins.sort_unstable_by(|lhs, rhs| rhs.cmp(lhs));
+    coins.sort_unstable_by_key(|coin| Reverse(*coin));
     let amount = amount as usize;
     let mut table = vec![0; amount + 1];
     for &coin in &coins {

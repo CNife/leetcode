@@ -4,9 +4,9 @@ use std::collections::VecDeque;
 pub fn max_distance(mut grid: Vec<Vec<i32>>) -> i32 {
     let n = grid.len();
     let mut queue = VecDeque::new();
-    for i in 0..n {
-        for j in 0..n {
-            if grid[i][j] == 1 {
+    for (i, row) in grid.iter().enumerate() {
+        for (j, cell) in row.iter().enumerate() {
+            if *cell == 1 {
                 queue.push_back((i, j));
             }
         }

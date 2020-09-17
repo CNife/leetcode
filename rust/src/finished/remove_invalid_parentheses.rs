@@ -25,7 +25,6 @@ pub fn remove_invalid_parentheses(input: String) -> Vec<String> {
 fn backtrack(ctx: &mut Context, index: usize, left: usize, right: usize) {
     if index >= ctx.input.len() {
         if left == right && ctx.path.len() >= ctx.max_path_len {
-            dbg!(&ctx, index, left, right);
             ctx.max_path_len = ctx.path.len();
             ctx.result.insert(ctx.path.clone());
         }

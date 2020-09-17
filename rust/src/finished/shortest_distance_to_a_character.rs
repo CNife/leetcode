@@ -20,15 +20,14 @@ pub fn shortest_to_char<S: AsRef<str>>(s: S, c: char) -> Vec<i32> {
     res
 }
 
-fn distance_vec<I>(mut itr: I, expected: char) -> Vec<Option<i32>>
+fn distance_vec<I>(itr: I, expected: char) -> Vec<Option<i32>>
 where
     I: Iterator<Item = char>,
 {
     let mut res = Vec::new();
     let mut prev_idx: Option<usize> = None;
-    let mut idx = 0usize;
 
-    while let Some(ch) = itr.next() {
+    for (idx, ch) in itr.enumerate() {
         let distance = if ch == expected {
             prev_idx = Some(idx);
             Some(0)
@@ -37,7 +36,6 @@ where
         } else {
             None
         };
-        idx += 1;
         res.push(distance);
     }
     res

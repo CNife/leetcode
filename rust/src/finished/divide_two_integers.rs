@@ -4,7 +4,7 @@ pub fn divide(dividend: i32, divisor: i32) -> i32 {
     if let Some(result) = handle_special_cases(dividend, divisor) {
         return result;
     }
-    debug_assert!(vec![0, 1, -1, i32::MIN].contains(&divisor) == false);
+    debug_assert!(!vec![0, 1, -1, i32::MIN].contains(&divisor));
     debug_assert!(dividend == i32::MIN || dividend.abs() > divisor.abs());
 
     let (abs_result, negative_result) = if dividend > 0 && divisor < 0 {

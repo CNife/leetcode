@@ -1,3 +1,5 @@
+use std::cmp::Ordering::*;
+
 pub fn three_sum(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
     nums.sort_unstable();
     let nums = nums;
@@ -16,14 +18,14 @@ pub fn three_sum(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
         let mut k = nums.len() - 1;
         while j < k {
             let sum = nums[i] + nums[j] + nums[k];
-            if sum == 0 {
-                res.push(vec![nums[i], nums[j], nums[k]]);
-                j = next_right_different(&nums, j);
-                k = next_left_different(&nums, k);
-            } else if sum < 0 {
-                j = next_right_different(&nums, j);
-            } else {
-                k = next_left_different(&nums, k);
+            match sum.cmp(&0) {
+                Equal => {
+                    res.push(vec![nums[i], nums[j], nums[k]]);
+                    j = next_right_different(&nums, j);
+                    k = next_left_different(&nums, k);
+                }
+                Less => j = next_right_different(&nums, j),
+                Greater => k = next_left_different(&nums, k),
             }
         }
         i = next_right_different(&nums, i);

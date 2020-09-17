@@ -18,7 +18,7 @@ pub fn number_of_boomerangs(points: Vec<Vec<i32>>) -> i32 {
     res
 }
 
-fn distance(p1: &Vec<i32>, p2: &Vec<i32>) -> i32 {
+fn distance(p1: &[i32], p2: &[i32]) -> i32 {
     let x_distance = p1[0] - p2[0];
     let y_distance = p1[1] - p2[1];
     x_distance * x_distance + y_distance * y_distance

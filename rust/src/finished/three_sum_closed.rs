@@ -23,6 +23,7 @@ fn closest_n_sum(nums: &[i32], target: i32, n: usize) -> i32 {
     }
 }
 
+#[allow(clippy::comparison_chain)]
 fn closest_num(nums: &[i32], target: i32) -> i32 {
     let mut i = 0;
     let mut j = nums.len() - 1;

@@ -38,8 +38,7 @@ impl Solution {
     fn init_matrix(n: usize) -> Vec<Vec<i32>> {
         let mut matrix = Vec::with_capacity(n);
         for _ in 0..n {
-            let mut row = Vec::with_capacity(n);
-            row.resize(n, 0);
+            let row = vec![0; n];
             matrix.push(row);
         }
         matrix

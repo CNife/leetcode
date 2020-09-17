@@ -10,7 +10,7 @@ impl Solution {
         res.into_iter().collect::<Vec<_>>()
     }
 
-    fn backtrace(res: &mut HashSet<Vec<i32>>, seq: &mut Vec<i32>, nums: &Vec<i32>, start: usize) {
+    fn backtrace(res: &mut HashSet<Vec<i32>>, seq: &mut Vec<i32>, nums: &[i32], start: usize) {
         if seq.len() >= 2 {
             res.insert(seq.clone());
         }

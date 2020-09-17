@@ -1,3 +1,5 @@
+use std::cmp::Ordering::*;
+
 pub fn minimum_abs_difference(mut arr: Vec<i32>) -> Vec<Vec<i32>> {
     let mut min_diff = std::i32::MAX;
     let mut idxs = vec![];
@@ -5,12 +7,14 @@ pub fn minimum_abs_difference(mut arr: Vec<i32>) -> Vec<Vec<i32>> {
     arr.sort_unstable();
     for i in 0..arr.len() - 1 {
         let diff = arr[i + 1] - arr[i];
-        if diff < min_diff {
-            min_diff = diff;
-            idxs.clear();
-            idxs.push(i);
-        } else if diff == min_diff {
-            idxs.push(i);
+        match diff.cmp(&min_diff) {
+            Equal => idxs.push(i),
+            Less => {
+                min_diff = diff;
+                idxs.clear();
+                idxs.push(i);
+            }
+            Greater => {}
         }
     }
 

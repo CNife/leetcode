@@ -24,7 +24,7 @@ impl CharMap {
     fn from_str(s: &str) -> CharMap {
         let mut map = [0u32; 26];
         for c in s.as_bytes() {
-            let idx = *c as u8 - 'a' as u8;
+            let idx = *c as u8 - b'a';
             map[idx as usize] += 1;
         }
         CharMap(map)

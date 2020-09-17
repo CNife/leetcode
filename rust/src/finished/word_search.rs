@@ -1,5 +1,7 @@
+#[allow(unused_imports)]
 use Direction::*;
 
+#[allow(dead_code)]
 #[derive(Eq, PartialEq, Debug, Copy, Clone)]
 enum Direction {
     Start,
@@ -96,19 +98,4 @@ fn test() {
             assert_eq!(exist(board.clone(), word.to_string()), *expected);
         }
     }
-}
-
-#[test]
-fn size_of_direction() {
-    assert_eq!(std::mem::size_of::<Direction>(), 1);
-
-    let inspect = |d: Direction| unsafe {
-        let value = std::mem::transmute::<Direction, u8>(d);
-        println!("{:?} = {}", d, value);
-    };
-    inspect(Start);
-    inspect(Left);
-    inspect(Right);
-    inspect(Up);
-    inspect(Down);
 }

@@ -14,7 +14,7 @@ fn backtrace(
     stack: &mut Vec<i32>,
     results: &mut HashSet<Vec<i32>>,
 ) {
-    for (index, &candidate) in candidates.into_iter().enumerate() {
+    for (index, &candidate) in candidates.iter().enumerate() {
         if candidate <= target {
             stack.push(candidate);
             if candidate < target {

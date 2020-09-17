@@ -4,17 +4,17 @@ pub fn max_increase_keeping_skyline(grid: Vec<Vec<i32>>) -> i32 {
     grid_sum(&max_grid(row_skyline(&grid), column_skyline(&grid))) - grid_sum(&grid)
 }
 
-fn row_skyline(grid: &Vec<Vec<i32>>) -> Vec<i32> {
+fn row_skyline(grid: &[Vec<i32>]) -> Vec<i32> {
     grid.iter().map(|row| *row.iter().max().unwrap()).collect()
 }
 
-fn column_skyline(grid: &Vec<Vec<i32>>) -> Vec<i32> {
+fn column_skyline(grid: &[Vec<i32>]) -> Vec<i32> {
     (0..grid[0].len())
         .map(|c| (0..grid.len()).map(|r| grid[r][c]).max().unwrap())
         .collect()
 }
 
-fn grid_sum(grid: &Vec<Vec<i32>>) -> i32 {
+fn grid_sum(grid: &[Vec<i32>]) -> i32 {
     grid.iter().map(|row| row.iter().sum::<i32>()).sum()
 }
 

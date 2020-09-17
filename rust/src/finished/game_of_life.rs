@@ -12,13 +12,13 @@ impl Solution {
             }
         }
 
-        for r in 0..rows {
-            for c in 0..columns {
-                board[r][c] = match board[r][c] {
+        for row in board.iter_mut() {
+            for cell in row.iter_mut() {
+                *cell = match *cell {
                     MARKED_ONE => 0,
                     MARKED_ZERO => 1,
                     n => n,
-                };
+                }
             }
         }
     }

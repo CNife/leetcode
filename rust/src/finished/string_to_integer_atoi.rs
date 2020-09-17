@@ -21,7 +21,7 @@ pub fn my_atoi(s: String) -> i32 {
         }
     }
 
-    while let Some(ch) = iter.next() {
+    for ch in iter {
         if ch.is_ascii_digit() {
             result = result * 10 + char_to_digit(ch);
             if result > i32::MAX as i64 && is_positive {

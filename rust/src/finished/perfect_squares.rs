@@ -39,9 +39,7 @@ fn is_square(n: i32) -> bool {
 }
 
 fn can_be_split_to_2_squares(n: i32) -> bool {
-    (1..=(n as f64).sqrt().floor() as i32)
-        .find(|i| is_square(n - i * i))
-        .is_some()
+    (1..=(n as f64).sqrt().floor() as i32).any(|i| is_square(n - i * i))
 }
 
 fn can_be_split_to_4_squares(mut n: i32) -> bool {

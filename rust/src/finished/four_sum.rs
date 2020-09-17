@@ -1,3 +1,4 @@
+use std::cmp::Ordering::*;
 use std::collections::HashSet;
 
 pub fn four_sum(mut nums: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
@@ -13,15 +14,14 @@ pub fn four_sum(mut nums: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
             let mut right = nums.len() - 1;
             while left < right {
                 let sum = nums[i] + nums[j] + nums[left] + nums[right];
-                if sum == target {
-                    let a_result = vec![nums[i], nums[j], nums[left], nums[right]];
-                    result.insert(a_result);
-                    left += 1;
-                    right -= 1;
-                } else if sum < target {
-                    left += 1;
-                } else {
-                    right -= 1;
+                match sum.cmp(&target) {
+                    Equal => {
+                        result.insert(vec![nums[i], nums[j], nums[left], nums[right]]);
+                        left += 1;
+                        right -= 1;
+                    }
+                    Less => left += 1,
+                    Greater => right -= 1,
                 }
             }
         }

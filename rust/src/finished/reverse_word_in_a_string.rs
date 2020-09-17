@@ -4,7 +4,7 @@ pub fn reverse_words(input: String) -> String {
         None => String::new(),
         Some(first) => {
             let mut result = String::from(first);
-            while let Some(word) = word_iter.next() {
+            for word in word_iter {
                 result.push(' ');
                 result.push_str(word);
             }

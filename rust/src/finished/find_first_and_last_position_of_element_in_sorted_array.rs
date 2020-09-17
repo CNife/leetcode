@@ -17,7 +17,7 @@ pub fn search_range(nums: Vec<i32>, target: i32) -> Vec<i32> {
 
 // 在从小到大排序的、非空的 nums 中，比 target 小（不计相等）的元素有多少个？
 fn count_of_less_than(nums: &[i32], target: i32) -> usize {
-    debug_assert!(nums.len() > 0);
+    debug_assert!(!nums.is_empty());
 
     let len = nums.len();
     if nums[0] >= target {

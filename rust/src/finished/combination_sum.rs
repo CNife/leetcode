@@ -7,7 +7,7 @@ pub fn combination_sum(mut candidates: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
 }
 
 fn backtrace(candidates: &[i32], target: i32, stack: &mut Vec<i32>, results: &mut Vec<Vec<i32>>) {
-    for (index, &candidate) in candidates.into_iter().enumerate() {
+    for (index, &candidate) in candidates.iter().enumerate() {
         if candidate <= target {
             stack.push(candidate);
             if candidate < target {

@@ -5,21 +5,27 @@ pub fn letter_case_permutation(s: String) -> Vec<String> {
 }
 
 fn do_permutation(s: Vec<u8>, idx: usize, res: &mut Vec<String>) {
-    if idx < s.len() {
-        let ch = s[idx];
-        if ch.is_ascii_uppercase() {
-            let mut sc = s.clone();
-            sc[idx] = ch.to_ascii_lowercase();
-            do_permutation(sc, idx + 1, res);
-        } else if ch.is_ascii_lowercase() {
-            let mut sc = s.clone();
-            sc[idx] = ch.to_ascii_uppercase();
-            do_permutation(sc, idx + 1, res);
+    use std::cmp::Ordering::*;
+
+    match idx.cmp(&s.len()) {
+        Equal => {
+            let result = unsafe { String::from_utf8_unchecked(s) };
+            res.push(result);
         }
-        do_permutation(s, idx + 1, res);
-    } else if idx == s.len() {
-        let result = unsafe { String::from_utf8_unchecked(s) };
-        res.push(result);
+        Less => {
+            let ch = s[idx];
+            if ch.is_ascii_uppercase() {
+                let mut sc = s.clone();
+                sc[idx] = ch.to_ascii_lowercase();
+                do_permutation(sc, idx + 1, res);
+            } else if ch.is_ascii_lowercase() {
+                let mut sc = s.clone();
+                sc[idx] = ch.to_ascii_uppercase();
+                do_permutation(sc, idx + 1, res);
+            }
+            do_permutation(s, idx + 1, res);
+        }
+        Greater => {}
     }
 }
 

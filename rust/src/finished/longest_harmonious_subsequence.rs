@@ -6,7 +6,6 @@ pub fn find_lhs(nums: Vec<i32>) -> i32 {
     for num in nums {
         *num_counts.entry(num).or_insert(0) += 1;
     }
-    dbg!(&num_counts);
 
     let mut prev_num = -1;
     let mut prev_count = -1;

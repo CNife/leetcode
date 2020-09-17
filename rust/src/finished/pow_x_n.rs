@@ -2,10 +2,10 @@ pub fn my_pow(x: f64, n: i32) -> f64 {
     if x == 0.0 {
         return 0.0;
     }
-    if x == 1.0 || n == 0 {
+    if (x - 1.0).abs() < f64::EPSILON || n == 0 {
         return 1.0;
     }
-    if x == -1.0 {
+    if (x + 1.0).abs() < f64::EPSILON {
         return if (n & 1) == 0 { 1.0 } else { -1.0 };
     }
     if x.is_infinite() {
@@ -29,7 +29,12 @@ pub fn my_pow(x: f64, n: i32) -> f64 {
 }
 
 fn pow_regular(x: f64, n: i32) -> f64 {
-    debug_assert!(x.is_finite() && x != 0.0 && x != 1.0 && x != -1.0);
+    debug_assert!(
+        x.is_finite()
+            && x != 0.0
+            && (x - 1.0).abs() > f64::EPSILON
+            && (x + 1.0).abs() > f64::EPSILON
+    );
     debug_assert!(n != 0);
 
     let (x, n) = if n > 0 {

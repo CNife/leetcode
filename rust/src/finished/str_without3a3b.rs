@@ -6,16 +6,16 @@ impl Solution {
         let mut i = 0;
         while a > 0 || b > 0 {
             let write_a = if i >= 2 && res[i - 1] == res[i - 2] {
-                res[i - 1] == 'b' as u8
+                res[i - 1] == b'b'
             } else {
                 a > b
             };
             if write_a {
                 a -= 1;
-                res.push('a' as u8);
+                res.push(b'a');
             } else {
                 b -= 1;
-                res.push('b' as u8);
+                res.push(b'b');
             }
             i += 1;
         }

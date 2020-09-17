@@ -1,4 +1,4 @@
-use std::cmp::{max, min};
+use std::cmp::{max, min, Ordering::*};
 use std::collections::HashMap;
 
 pub fn super_egg_drop(k: i32, n: i32) -> i32 {
@@ -23,13 +23,13 @@ fn dp(memo: &mut HashMap<(i32, i32), i32>, k: i32, n: i32) -> i32 {
                         let x = (lo + hi) / 2;
                         let t1 = dp(memo, k - 1, x - 1);
                         let t2 = dp(memo, k, n - x);
-                        if t1 < t2 {
-                            lo = x;
-                        } else if t1 > t2 {
-                            hi = x;
-                        } else {
-                            lo = x;
-                            hi = x;
+                        match t1.cmp(&t2) {
+                            Equal => {
+                                lo = x;
+                                hi = x;
+                            }
+                            Less => lo = x,
+                            Greater => hi = x,
                         }
                     }
                     1 + min(

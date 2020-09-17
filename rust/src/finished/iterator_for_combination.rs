@@ -59,7 +59,6 @@ fn test_next_indexes() {
     let m: usize = 4;
     let mut stack = Vec::from_iter(0..n);
     loop {
-        println!("{:?}", stack);
         if !next_indexes(&mut stack, m - 1).is_some() {
             break;
         }

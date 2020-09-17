@@ -91,5 +91,5 @@ impl Context {
 
 #[test]
 fn test() {
-    println!("{:?}", solve_n_queens(4));
+    solve_n_queens(4);
 }

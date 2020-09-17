@@ -26,7 +26,6 @@ pub fn can_measure_water(x: i32, y: i32, z: i32) -> bool {
     let mut visited = HashSet::new();
     queue.push_back((0, 0));
     while let Some(state) = queue.pop_front() {
-        dbg!(state);
         if state.0 + state.1 == z {
             return true;
         }

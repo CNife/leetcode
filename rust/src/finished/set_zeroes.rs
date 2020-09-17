@@ -6,7 +6,7 @@ impl Solution {
         let mut columns = vec![];
 
         for (r, row) in matrix.iter().enumerate() {
-            for (c, elem) in row.into_iter().enumerate() {
+            for (c, elem) in row.iter().enumerate() {
                 if *elem == 0 {
                     rows.push(r);
                     columns.push(c);

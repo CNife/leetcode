@@ -25,6 +25,7 @@ pub fn image_smoother(matrix: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
                 };
             }
 
+            #[allow(clippy::eval_order_dependence)]
             let sum = cell!(left, up)
                 + cell!(x, up)
                 + cell!(right, up)

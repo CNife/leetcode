@@ -2,15 +2,15 @@ pub fn is_valid_sudoku(board: Vec<Vec<char>>) -> bool {
     validate_rows(&board) && validate_columns(&board) && validate_grids(&board)
 }
 
-fn validate_rows(board: &Vec<Vec<char>>) -> bool {
+fn validate_rows(board: &[Vec<char>]) -> bool {
     board.iter().all(|row| is_valid(row.iter().cloned()))
 }
 
-fn validate_columns(board: &Vec<Vec<char>>) -> bool {
+fn validate_columns(board: &[Vec<char>]) -> bool {
     (0..9).all(|i| is_valid((0..9).map(|j| board[j][i])))
 }
 
-fn validate_grids(board: &Vec<Vec<char>>) -> bool {
+fn validate_grids(board: &[Vec<char>]) -> bool {
     (0..3).all(|i| {
         (0..3).all(|j| {
             is_valid(GridGenerator { n: 3, i: 0, j: 0 }.map(|(m, n)| board[i * 3 + m][j * 3 + n]))
@@ -18,19 +18,16 @@ fn validate_grids(board: &Vec<Vec<char>>) -> bool {
     })
 }
 
-fn is_valid<I: Iterator<Item = char>>(mut iter: I) -> bool {
+fn is_valid<I: Iterator<Item = char>>(iter: I) -> bool {
     let mut marks = [false; 9];
-    while let Some(ch) = iter.next() {
-        match ch {
-            '1'..='9' => {
-                let index = (ch as u8 - b'1') as usize;
-                if marks[index] {
-                    return false;
-                } else {
-                    marks[index] = true;
-                }
+    for ch in iter {
+        if let '1'..='9' = ch {
+            let index = (ch as u8 - b'1') as usize;
+            if marks[index] {
+                return false;
+            } else {
+                marks[index] = true;
             }
-            _ => {}
         }
     }
     true

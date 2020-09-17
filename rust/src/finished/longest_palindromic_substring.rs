@@ -8,7 +8,7 @@ pub fn longest_palindrome(s: String) -> String {
     let mut res_left = 0;
     let mut res_right = 0;
 
-    let mut foo = |left: usize, right: usize| {
+    let mut helper = |left: usize, right: usize| {
         let (l, r) = expand_palindrome(&s, left, right);
         let len = r - l + 1;
         if len > max_len {
@@ -19,8 +19,8 @@ pub fn longest_palindrome(s: String) -> String {
     };
 
     for i in 0..s.len() - 1 {
-        foo(i, i);
-        foo(i, i + 1);
+        helper(i, i);
+        helper(i, i + 1);
     }
     unsafe { String::from_utf8_unchecked(s[res_left..=res_right].to_owned()) }
 }
