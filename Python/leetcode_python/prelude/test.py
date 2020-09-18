@@ -45,3 +45,10 @@ T = TypeVar("T")
 def sorted_list(src: List[T], **kwargs) -> List[T]:
     src.sort(**kwargs)
     return src
+
+
+def sorted_2d_list(src: List[List[T]], **kwargs) -> List[List[T]]:
+    for ll in src:
+        ll.sort()
+    src.sort(**kwargs)
+    return src
