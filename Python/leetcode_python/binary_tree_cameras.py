@@ -25,6 +25,6 @@ test(
     min_camara_cover,
     [
         (new_tree(0, 0, None, 0, 0), 1),
-        (new_tree(0, 0, None, 0, None, 0, None, None, 0), 2)
-    ]
+        (new_tree(0, 0, None, 0, None, 0, None, None, 0), 2),
+    ],
 )
