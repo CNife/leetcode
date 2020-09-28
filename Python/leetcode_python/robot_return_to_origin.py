@@ -15,4 +15,10 @@ def judge_circle(moves: str) -> bool:
     return x == 0 and y == 0
 
 
-test(judge_circle, [("UD", True), ("LL", False),])
+test(
+    judge_circle,
+    [
+        ("UD", True),
+        ("LL", False),
+    ],
+)

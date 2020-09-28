@@ -7,7 +7,10 @@ def path_sum(root: TreeNode, target: int) -> List[List[int]]:
     if not root:
         return []
 
-    stack, result, = [], []
+    stack, result, = (
+        [],
+        [],
+    )
 
     def dfs(node: TreeNode, remaining: int) -> None:
         stack.append(node)

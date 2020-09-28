@@ -20,4 +20,10 @@ def judge_24_points(nums: List[int]) -> bool:
     return inner(tuple(nums))
 
 
-test(judge_24_points, [([4, 1, 8, 7], True), ([1, 2, 1, 2], False),])
+test(
+    judge_24_points,
+    [
+        ([4, 1, 8, 7], True),
+        ([1, 2, 1, 2], False),
+    ],
+)

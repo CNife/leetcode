@@ -42,4 +42,9 @@ def deserialize(data: str) -> Optional[TreeNode]:
 
 
 test(deserialize, [("1,2,3,null,null,4,5", new_tree(1, 2, 3, None, None, 4, 5))])
-test(serialize, [(new_tree(1, 2, 3, None, None, 4, 5), "1,2,3,null,null,4,5"),])
+test(
+    serialize,
+    [
+        (new_tree(1, 2, 3, None, None, 4, 5), "1,2,3,null,null,4,5"),
+    ],
+)

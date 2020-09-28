@@ -27,5 +27,7 @@ def level_order_bottom(root: TreeNode) -> List[List[int]]:
 
 test(
     level_order_bottom,
-    [(new_tree(3, 9, 20, None, None, 15, 7), [[15, 7], [9, 20], [3]]),],
+    [
+        (new_tree(3, 9, 20, None, None, 15, 7), [[15, 7], [9, 20], [3]]),
+    ],
 )

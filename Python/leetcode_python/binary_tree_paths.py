@@ -28,6 +28,8 @@ def binary_tree_path(root: TreeNode) -> List[str]:
 
 test(
     binary_tree_path,
-    [(new_tree(1, 2, 3, None, 5), ["1->2->5", "1->3"]),],
+    [
+        (new_tree(1, 2, 3, None, 5), ["1->2->5", "1->3"]),
+    ],
     map_func=sorted_list,
 )

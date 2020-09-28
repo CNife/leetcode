@@ -20,4 +20,10 @@ def get_permutation(n: int, k: int) -> str:
     return "".join(res)
 
 
-test(get_permutation, [(3, 3, "213"), (4, 9, "2314"),])
+test(
+    get_permutation,
+    [
+        (3, 3, "213"),
+        (4, 9, "2314"),
+    ],
+)

@@ -19,4 +19,9 @@ def inorder_traversal(root: TreeNode) -> List[int]:
     return result
 
 
-test(inorder_traversal, [(new_tree(1, None, 2, 3), [1, 3, 2]),])
+test(
+    inorder_traversal,
+    [
+        (new_tree(1, None, 2, 3), [1, 3, 2]),
+    ],
+)

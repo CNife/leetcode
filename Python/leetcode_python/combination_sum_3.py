@@ -23,6 +23,9 @@ def combinations(k: int, n: int) -> List[List[int]]:
 
 test(
     combinations,
-    [(3, 7, [[1, 2, 4]]), (3, 9, [[1, 2, 6], [1, 3, 5], [2, 3, 4]]),],
+    [
+        (3, 7, [[1, 2, 4]]),
+        (3, 9, [[1, 2, 6], [1, 3, 5], [2, 3, 4]]),
+    ],
     map_func=sorted_list,
 )

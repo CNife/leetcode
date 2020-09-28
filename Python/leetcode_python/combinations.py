@@ -22,6 +22,8 @@ def combine(n: int, k: int) -> List[List[int]]:
 
 test(
     combine,
-    [(4, 2, [[2, 4], [3, 4], [2, 3], [1, 2], [1, 3], [1, 4]]),],
+    [
+        (4, 2, [[2, 4], [3, 4], [2, 3], [1, 2], [1, 3], [1, 4]]),
+    ],
     map_func=sorted_list,
 )

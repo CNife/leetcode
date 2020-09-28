@@ -23,5 +23,7 @@ def build_tree(inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
 
 test(
     build_tree,
-    [([9, 3, 15, 20, 7], [9, 15, 7, 20, 3], new_tree(3, 9, 20, None, None, 15, 7)),],
+    [
+        ([9, 3, 15, 20, 7], [9, 15, 7, 20, 3], new_tree(3, 9, 20, None, None, 15, 7)),
+    ],
 )
