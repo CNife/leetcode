@@ -29,10 +29,11 @@ def path_sum(root: TreeNode, target: int) -> List[List[int]]:
 test(
     path_sum,
     [
-        (new_tree(5, 4, 8, 11, None, 13, 4, 7, 2, None, None, 5, 1), 22, [
-            [5, 4, 11, 2],
-            [5, 8, 4, 5]
-        ])
+        (
+            new_tree(5, 4, 8, 11, None, 13, 4, 7, 2, None, None, 5, 1),
+            22,
+            [[5, 4, 11, 2], [5, 8, 4, 5]],
+        )
     ],
     map_func=sorted_list,
 )
