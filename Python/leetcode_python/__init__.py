@@ -6,4 +6,8 @@ from leetcode_python.prelude.tree import (
     is_valid_avl,
     is_valid_bst,
     height,
+    inorder_traverse,
+    preorder_traverse,
+    postorder_traverse,
+    level_order_traverse,
 )

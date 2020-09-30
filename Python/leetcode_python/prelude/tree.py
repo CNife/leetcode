@@ -1,5 +1,5 @@
 from collections import deque
-from typing import Optional
+from typing import Optional, List
 
 
 class TreeNode:
@@ -71,3 +71,60 @@ def is_valid_avl(root: TreeNode) -> bool:
     if not is_valid_bst(root):
         return False
     return abs(height(root.left) - height(root.right)) <= 1
+
+
+def inorder_traverse(root: TreeNode) -> List[int]:
+    result = []
+
+    def inorder(node: TreeNode) -> None:
+        if node:
+            inorder(node.left)
+            result.append(node.val)
+            inorder(node.right)
+
+    inorder(root)
+    return result
+
+
+def preorder_traverse(root: TreeNode) -> List[int]:
+    result = []
+
+    def preorder(node: TreeNode) -> None:
+        if node:
+            result.append(node.val)
+            preorder(node.left)
+            preorder(node.right)
+
+    preorder(root)
+    return result
+
+
+def postorder_traverse(root: TreeNode) -> List[int]:
+    result = []
+
+    def postorder(node: TreeNode) -> None:
+        if node:
+            postorder(node.left)
+            postorder(node.right)
+            result.append(node.val)
+
+    postorder(root)
+    return result
+
+
+def level_order_traverse(root: TreeNode) -> List[int]:
+    queue, result = deque(), []
+    if root:
+        queue.append(root)
+
+    while queue:
+        n = len(queue)
+        for _ in range(n):
+            node = queue.popleft()
+            result.append(node.val)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+
+    return result
