@@ -33,7 +33,7 @@ test(
     [
         (new_tree(3, 9, 20, None, None, 15, 7), [3, 14.5, 11]),
     ],
-    eq_func=lambda lhs, rhs: all(
+    equals_func=lambda lhs, rhs: all(
         isclose(left, right)
         for left, right in zip_longest(lhs, rhs, fillvalue=float("nan"))
     ),

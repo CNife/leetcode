@@ -69,5 +69,5 @@ test(
             ],
         ),
     ],
-    actual_func=lambda t: t[0],
+    actual_func=lambda t, _: t[0],
 )

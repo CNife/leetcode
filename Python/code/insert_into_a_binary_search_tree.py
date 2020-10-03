@@ -24,5 +24,5 @@ def insert_into_bst(root: TreeNode, val: int) -> TreeNode:
 test(
     insert_into_bst,
     [(new_tree(4, 2, 7, 1, 3), 5, [1, 2, 3, 4, 5, 7]), (new_tree(), 1, [1])],
-    eq_func=lambda actual, expect: inorder_traverse(actual) == expect,
+    equals_func=lambda actual, expect: inorder_traverse(actual) == expect,
 )

@@ -19,5 +19,5 @@ def merge(a: List[int], m: int, b: List[int], n: int) -> None:
 test(
     merge,
     [([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3, [1, 2, 2, 3, 5, 6])],
-    actual_func=lambda t: t[0],
+    actual_func=lambda t, _: t[0],
 )

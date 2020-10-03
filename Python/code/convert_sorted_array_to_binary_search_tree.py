@@ -19,5 +19,5 @@ test(
     [
         ([-10, -3, 0, 5, 9], None),
     ],
-    eq_func=lambda root, _: is_valid_avl(root),
+    equals_func=lambda root, _: is_valid_avl(root),
 )

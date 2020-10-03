@@ -31,5 +31,5 @@ test(
         (new_tree(3, 1, 4, None, None, 2), new_tree(2, 1, 4, None, None, 3)),
         (new_tree(5, 3, 9, -2147483648, 2), new_tree(5, 2, 9, -2147483648, 3)),
     ],
-    actual_func=lambda t: t[0],
+    actual_func=lambda case, _: case[0],
 )

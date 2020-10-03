@@ -1,42 +1,62 @@
-import sys
-
 from typing import Callable, List, Tuple, TypeVar
+
+from rich.console import Console
+from rich.panel import Panel
+
+console = Console()
 
 
 def test(
     function: Callable,
     test_cases: List[Tuple],
     *,
+    args_func: Callable = None,
+    expect_func: Callable = None,
     actual_func: Callable = None,
     map_func: Callable = None,
-    eq_func: Callable = None,
+    equals_func: Callable = None,
 ):
+    if args_func is None:
+
+        def args_func(case):
+            return case[:-1]
+
+    if expect_func is None:
+
+        def expect_func(case):
+            return case[-1]
+
+    if actual_func is None:
+
+        def actual_func(_, prev_actual):
+            return prev_actual
+
+    if map_func is None:
+
+        def map_func(item):
+            return item
+
+    if equals_func is None:
+
+        def equals_func(lhs, rhs):
+            return lhs == rhs
+
     for test_case in test_cases:
-        args, expect = test_case[:-1], test_case[-1]
-        actual = function(*args)
+        args = args_func(test_case)
+        expect = expect_func(test_case)
+        actual = actual_func(test_case, function(*args))
 
-        def error():
-            message = (
-                f"Test failed\n"
-                f"function: {function}\n"
-                f'args: {", ".join(map(lambda arg: str(arg), args))}\n'
-                f"actual: {actual}\n"
-                f"expect: {expect}\n"
-            )
-            print(message, file=sys.stderr)
-            sys.exit(1)
+        expect, actual = map_func(expect), map_func(actual)
+        passed = equals_func(actual, expect)
 
-        if actual_func:
-            actual = actual_func(test_case)
-        if map_func:
-            actual, expect = map_func(actual), map_func(expect)
-        if eq_func:
-            if not eq_func(actual, expect):
-                error()
-        elif actual != expect:
-            error()
+        if not passed:
+            console.print(f"Test for [blue]{function}[/] [red]Failed[/]!")
+            console.print(Panel(str(args), title="args"))
+            console.print(Panel(str(expect), title="expect"))
+            console.print(Panel(str(actual), title="actual"))
+            exit(1)
 
-    print(f"Test for {function.__name__} passed")
+    console.print(f"Test for [blue]{function}[/] [green]Succeed[/]!")
 
 
 T = TypeVar("T")
