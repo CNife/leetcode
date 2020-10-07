@@ -33,9 +33,6 @@ def list_length(list_head: Optional[ListNode]) -> int:
 
 test(
     sorted_list_to_bst,
-    [
-        (new_list(-10, 3, 0, 5, 9), None),
-        (new_list(), None),
-    ],
+    [(new_list(-10, 3, 0, 5, 9), None), (new_list(), None),],
     equals_func=lambda root, _: is_valid_avl(root),
 )

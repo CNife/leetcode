@@ -30,9 +30,7 @@ def average_of_levels(root: TreeNode) -> List[float]:
 
 test(
     average_of_levels,
-    [
-        (new_tree(3, 9, 20, None, None, 15, 7), [3, 14.5, 11]),
-    ],
+    [(new_tree(3, 9, 20, None, None, 15, 7), [3, 14.5, 11]),],
     equals_func=lambda lhs, rhs: all(
         isclose(left, right)
         for left, right in zip_longest(lhs, rhs, fillvalue=float("nan"))

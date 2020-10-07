@@ -16,8 +16,5 @@ def convert_bst(root: TreeNode) -> TreeNode:
 
 
 test(
-    convert_bst,
-    [
-        (new_tree(5, 2, 13), new_tree(18, 20, 13)),
-    ],
+    convert_bst, [(new_tree(5, 2, 13), new_tree(18, 20, 13)),],
 )

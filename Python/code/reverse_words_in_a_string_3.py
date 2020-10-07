@@ -11,8 +11,5 @@ def reverse_words(s: str) -> str:
 
 # noinspection SpellCheckingInspection
 test(
-    reverse_words,
-    [
-        ("Let's take LeetCode contest", "s'teL ekat edoCteeL tsetnoc"),
-    ],
+    reverse_words, [("Let's take LeetCode contest", "s'teL ekat edoCteeL tsetnoc"),],
 )

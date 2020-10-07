@@ -21,9 +21,5 @@ def count_binary_substrings(s: str) -> int:
 
 
 test(
-    count_binary_substrings,
-    [
-        ("00110011", 6),
-        ("10101", 4),
-    ],
+    count_binary_substrings, [("00110011", 6), ("10101", 4),],
 )

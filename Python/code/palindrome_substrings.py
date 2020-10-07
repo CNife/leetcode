@@ -26,9 +26,5 @@ def count_substrings(s: str) -> int:
 
 
 test(
-    count_substrings,
-    [
-        ("abc", 3),
-        ("aaa", 6),
-    ],
+    count_substrings, [("abc", 3), ("aaa", 6),],
 )

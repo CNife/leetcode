@@ -1,2 +1,2 @@
-rich==7.1.0
+rich==8
 black==20.8b1

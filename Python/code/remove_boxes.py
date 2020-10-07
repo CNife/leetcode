@@ -27,8 +27,5 @@ def remove_boxes(boxes: List[int]) -> int:
 
 
 test(
-    remove_boxes,
-    [
-        ([1, 3, 2, 2, 2, 3, 4, 3, 1], 23),
-    ],
+    remove_boxes, [([1, 3, 2, 2, 2, 3, 4, 3, 1], 23),],
 )

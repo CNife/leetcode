@@ -66,8 +66,6 @@ class NQueensSolver:
 
 test(
     solve_n_queens,
-    [
-        (4, [[".Q..", "...Q", "Q...", "..Q."], ["..Q.", "Q...", "...Q", ".Q.."]]),
-    ],
+    [(4, [[".Q..", "...Q", "Q...", "..Q."], ["..Q.", "Q...", "...Q", ".Q.."]]),],
     map_func=sorted_list,
 )

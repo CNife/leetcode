@@ -16,9 +16,5 @@ def judge_circle(moves: str) -> bool:
 
 
 test(
-    judge_circle,
-    [
-        ("UD", True),
-        ("LL", False),
-    ],
+    judge_circle, [("UD", True), ("LL", False),],
 )

@@ -18,9 +18,5 @@ def longest_valid_parentheses(s: str) -> int:
 
 
 test(
-    longest_valid_parentheses,
-    [
-        ("(()", 2),
-        (")()())", 4),
-    ],
+    longest_valid_parentheses, [("(()", 2), (")()())", 4),],
 )

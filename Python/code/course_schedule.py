@@ -24,9 +24,5 @@ def can_finish(node_count: int, edges: List[List[int]]) -> bool:
 
 
 test(
-    can_finish,
-    [
-        (2, [[1, 0]], True),
-        (2, [[1, 0], [0, 1]], False),
-    ],
+    can_finish, [(2, [[1, 0]], True), (2, [[1, 0], [0, 1]], False),],
 )

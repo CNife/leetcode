@@ -38,8 +38,5 @@ def reverse_pairs(nums: List[int]) -> int:
 
 
 test(
-    reverse_pairs,
-    [
-        ([7, 5, 6, 4], 5),
-    ],
+    reverse_pairs, [([7, 5, 6, 4], 5),],
 )
