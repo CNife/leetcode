@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
+pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
     let mut map: HashMap<i32, i32> = HashMap::new();
     for (i, num) in nums.into_iter().enumerate() {
         let another = target - num;
