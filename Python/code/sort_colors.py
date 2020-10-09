@@ -20,6 +20,8 @@ def sort_colors(nums: List[int]) -> None:
 
 test(
     sort_colors,
-    [([2, 0, 2, 1, 1, 0], [0, 0, 1, 1, 2, 2]),],
+    [
+        ([2, 0, 2, 1, 1, 0], [0, 0, 1, 1, 2, 2]),
+    ],
     actual_func=lambda t, _: t[1],
 )

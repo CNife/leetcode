@@ -14,7 +14,7 @@ test(
     [
         (["h", "e", "l", "l", "o"], ["o", "l", "l", "e", "h"]),
         (["H", "a", "n", "n", "a", "h"], ["h", "a", "n", "n", "a", "H"]),
-        (["a", "b"], ["b", "a"])
+        (["a", "b"], ["b", "a"]),
     ],
-    actual_func=lambda t, _: t[0]
+    actual_func=lambda t, _: t[0],
 )

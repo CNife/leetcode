@@ -21,5 +21,9 @@ def judge_24_points(nums: List[int]) -> bool:
 
 
 test(
-    judge_24_points, [([4, 1, 8, 7], True), ([1, 2, 1, 2], False),],
+    judge_24_points,
+    [
+        ([4, 1, 8, 7], True),
+        ([1, 2, 1, 2], False),
+    ],
 )

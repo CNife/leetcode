@@ -15,6 +15,15 @@ class ListNode:
     def __repr__(self):
         return f"ListNode(val={self.val},next={self.next})"
 
+    def __getitem__(self, index: int) -> "ListNode":
+        node = self
+        for _ in range(index):
+            if node:
+                node = node.next
+            else:
+                raise IndexError("index out of range")
+        return node
+
 
 def new_list(*nums: int) -> Optional[ListNode]:
     if nums:

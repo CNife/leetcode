@@ -18,5 +18,9 @@ def increasing_triplet(nums: List[int]) -> bool:
 
 
 test(
-    increasing_triplet, [([1, 2, 3, 4, 5], True), ([5, 4, 3, 2, 1], False),],
+    increasing_triplet,
+    [
+        ([1, 2, 3, 4, 5], True),
+        ([5, 4, 3, 2, 1], False),
+    ],
 )

@@ -25,5 +25,9 @@ def predicate_the_winner(nums: List[int]) -> bool:
 
 
 test(
-    predicate_the_winner, [([1, 5, 2], False), ([1, 5, 233, 7], True),],
+    predicate_the_winner,
+    [
+        ([1, 5, 2], False),
+        ([1, 5, 233, 7], True),
+    ],
 )

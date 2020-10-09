@@ -8,5 +8,9 @@ def repeated_substring_pattern(s: str) -> bool:
 # noinspection SpellCheckingInspection
 test(
     repeated_substring_pattern,
-    [("abab", True), ("aba", False), ("abcabcabcabc", True),],
+    [
+        ("abab", True),
+        ("aba", False),
+        ("abcabcabcabc", True),
+    ],
 )

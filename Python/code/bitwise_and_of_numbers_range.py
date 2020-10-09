@@ -8,5 +8,9 @@ def range_bitwise_and(m: int, n: int) -> int:
 
 
 test(
-    range_bitwise_and, [(5, 7, 4), (0, 1, 0),],
+    range_bitwise_and,
+    [
+        (5, 7, 4),
+        (0, 1, 0),
+    ],
 )

@@ -19,5 +19,10 @@ def diving_board(shorter: int, longer: int, k: int) -> List[int]:
 
 
 test(
-    diving_board, [(1, 2, 3, [3, 4, 5, 6]), (1, 1, 0, []), (1, 1, 2, [2]),],
+    diving_board,
+    [
+        (1, 2, 3, [3, 4, 5, 6]),
+        (1, 1, 0, []),
+        (1, 1, 2, [2]),
+    ],
 )

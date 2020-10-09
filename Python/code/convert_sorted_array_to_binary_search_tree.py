@@ -16,6 +16,8 @@ def sorted_array_to_bst(nums: List[int]) -> Optional[TreeNode]:
 
 test(
     sorted_array_to_bst,
-    [([-10, -3, 0, 5, 9], None),],
+    [
+        ([-10, -3, 0, 5, 9], None),
+    ],
     equals_func=lambda root, _: is_valid_avl(root),
 )

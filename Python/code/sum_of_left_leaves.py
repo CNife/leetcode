@@ -14,5 +14,8 @@ def sum_of_left_leaves(root: TreeNode) -> int:
 
 
 test(
-    sum_of_left_leaves, [(new_tree(3, 9, 20, None, None, 15, 7), 24),],
+    sum_of_left_leaves,
+    [
+        (new_tree(3, 9, 20, None, None, 15, 7), 24),
+    ],
 )

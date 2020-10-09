@@ -18,5 +18,9 @@ def min_depth(root: TreeNode) -> int:
 
 
 test(
-    min_depth, [(new_tree(3, 9, 20, None, None, 15, 7), 2), (new_tree(1, 2), 2),],
+    min_depth,
+    [
+        (new_tree(3, 9, 20, None, None, 15, 7), 2),
+        (new_tree(1, 2), 2),
+    ],
 )

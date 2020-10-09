@@ -14,5 +14,8 @@ def max_profit(prices: List[int]) -> int:
 
 
 test(
-    max_profit, [([1, 2, 3, 0, 2], 3),],
+    max_profit,
+    [
+        ([1, 2, 3, 0, 2], 3),
+    ],
 )

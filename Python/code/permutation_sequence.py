@@ -21,5 +21,9 @@ def get_permutation(n: int, k: int) -> str:
 
 
 test(
-    get_permutation, [(3, 3, "213"), (4, 9, "2314"),],
+    get_permutation,
+    [
+        (3, 3, "213"),
+        (4, 9, "2314"),
+    ],
 )
