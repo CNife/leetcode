@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 
 
 class ListNode:
@@ -35,3 +35,18 @@ def new_list(*nums: int) -> Optional[ListNode]:
         return head
     else:
         return None
+
+
+def new_cycle_list(nums: List[int], cycle_entry_index: int) -> Optional[ListNode]:
+    if cycle_entry_index >= len(nums) or cycle_entry_index < 0:
+        raise IndexError("cycle entry index out of range")
+
+    head = ListNode(nums[0])
+    node, entry_node = head, head
+    for i, num in enumerate(nums[1:]):
+        node.next = ListNode(num)
+        node = node.next
+        if i + 1 <= cycle_entry_index:
+            entry_node = entry_node.next
+    node.next = entry_node
+    return head

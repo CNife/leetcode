@@ -1,4 +1,4 @@
-from .list import ListNode, new_list
+from .list import ListNode, new_list, new_cycle_list
 from .test import test, sorted_list, sorted_2d_list
 from .tree import (
     TreeNode,
