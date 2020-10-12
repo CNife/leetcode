@@ -1,7 +1,5 @@
 package minimum_path_sum
 
-import "fmt"
-
 func MinPathSum(grid [][]int) int {
 	if len(grid) == 0 || len(grid[0]) == 0 {
 		return 0
@@ -9,16 +7,13 @@ func MinPathSum(grid [][]int) int {
 
 	m, n := len(grid), len(grid[0])
 	dp := initDp(grid[0])
-	fmt.Println(dp)
 	for i := 1; i < m; i++ {
 		row := grid[i]
 		dp[0] += row[0]
 		for j := 1; j < n; j++ {
 			dp[j] = minInt(dp[j], dp[j-1]) + row[j]
 		}
-		fmt.Println(dp)
 	}
-	fmt.Println()
 	return dp[n-1]
 }
 

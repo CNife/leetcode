@@ -1,7 +1,7 @@
 package serialize_and_deserialize_binary_tree
 
 import (
-	. "leetcode/types"
+	. "github.com/CNife/leetcode/types"
 	"strconv"
 	"strings"
 )

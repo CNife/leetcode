@@ -1,6 +1,6 @@
 package maximum_depth_of_binary_tree
 
-import . "leetcode/types"
+import . "github.com/CNife/leetcode/types"
 
 func MaxDepth(root *TreeNode) int {
 	if root == nil {

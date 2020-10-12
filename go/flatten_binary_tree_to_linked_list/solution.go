@@ -1,7 +1,7 @@
 package flatten_binary_tree_to_linked_list
 
 import (
-	. "leetcode/types"
+	. "github.com/CNife/leetcode/types"
 )
 
 func Flatten(root *TreeNode) {
