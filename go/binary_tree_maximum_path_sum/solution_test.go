@@ -1,7 +1,7 @@
 package binary_tree_maximum_path_sum
 
 import (
-	. "leetcode/types"
+	. "github.com/CNife/leetcode/types"
 	"testing"
 )
 

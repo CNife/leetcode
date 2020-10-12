@@ -1,7 +1,7 @@
 package unique_binary_search_trees_2
 
 import (
-	. "leetcode/types"
+	. "github.com/CNife/leetcode/types"
 	"reflect"
 	"testing"
 )

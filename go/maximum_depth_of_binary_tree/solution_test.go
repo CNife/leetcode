@@ -1,7 +1,9 @@
 package maximum_depth_of_binary_tree
 
-import "testing"
-import . "leetcode/types"
+import (
+	. "github.com/CNife/leetcode/types"
+	"testing"
+)
 
 func TestMaxDepth(t *testing.T) {
 	tests := []struct {
