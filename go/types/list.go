@@ -1,5 +1,11 @@
 package types
 
+import (
+	"bytes"
+	"fmt"
+	"strconv"
+)
+
 type ListNode struct {
 	Val  int
 	Next *ListNode
@@ -18,4 +24,23 @@ func NewList(values ...int) *ListNode {
 		}
 	}
 	return head
+}
+
+func (l *ListNode) String() string {
+	if l == nil {
+		return "nil"
+	}
+
+	nodes := make(map[*ListNode]struct{})
+	buffer := bytes.NewBuffer([]byte(strconv.Itoa(l.Val)))
+	for ptr := l.Next; ptr != nil; ptr = ptr.Next {
+		if _, exists := nodes[ptr]; exists {
+			buffer.WriteString(fmt.Sprintf(" <recursion at %v>", ptr))
+			break
+		} else {
+			buffer.WriteString("->")
+			buffer.WriteString(strconv.Itoa(ptr.Val))
+		}
+	}
+	return buffer.String()
 }
