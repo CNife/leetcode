@@ -44,3 +44,13 @@ func (l *ListNode) String() string {
 	}
 	return buffer.String()
 }
+
+func (l *ListNode) Clone() *ListNode {
+	if l == nil {
+		return nil
+	}
+	return &ListNode{
+		Val:  l.Val,
+		Next: l.Next.Clone(),
+	}
+}
