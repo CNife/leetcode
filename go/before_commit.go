@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"strings"
 )
 
 func main() {
@@ -16,9 +17,9 @@ func main() {
 		log.Panicf("list current dir: %v", err)
 	}
 	for _, file := range files {
-		if file.IsDir() && file.Name() != ".idea" {
+		if file.IsDir() && !strings.HasPrefix(file.Name(), ".") {
 			testPackages = append(testPackages,
-				fmt.Sprintf(".\\%v\\", file.Name()))
+				fmt.Sprintf(".%c%v", os.PathSeparator, file.Name()))
 		}
 	}
 
