@@ -10,31 +10,31 @@ import (
 )
 
 func main() {
-	var testPackages []string
+	packages := collectPackages()
+	runGoCommand("test", packages)
+	runGoCommand("fmt", packages)
+}
 
-	files, err := ioutil.ReadDir(".")
+func collectPackages() []string {
+	dirs, err := ioutil.ReadDir(".")
 	if err != nil {
-		log.Panicf("list current dir: %v", err)
+		log.Panicf("list current director: %v", err)
 	}
-	for _, file := range files {
-		if file.IsDir() && !strings.HasPrefix(file.Name(), ".") {
-			testPackages = append(testPackages,
-				fmt.Sprintf(".%c%v", os.PathSeparator, file.Name()))
+	var result []string
+	for _, dir := range dirs {
+		if dir.IsDir() && !strings.HasPrefix(dir.Name(), ".") {
+			relativeDirName := fmt.Sprintf(".%c%v", os.PathSeparator, dir.Name())
+			result = append(result, relativeDirName)
 		}
 	}
+	return result
+}
 
-	for _, tp := range testPackages {
-		cmd := exec.Command("go", "test", tp)
-		cmd.Stdout = os.Stdout
-		if err = cmd.Run(); err != nil {
-			log.Panicf("test %v: %v", tp, err)
-		}
-	}
-
-	for _, tp := range testPackages {
-		cmd := exec.Command("go", "fmt", tp)
-		if err = cmd.Run(); err != nil {
-			log.Panicf("format %v: %v", tp, err)
-		}
+func runGoCommand(commandName string, packages []string) {
+	cmdArgs := append([]string{commandName}, packages...)
+	cmd := exec.Command("go", cmdArgs...)
+	cmd.Stdout, cmd.Stderr = os.Stdout, os.Stderr
+	if err := cmd.Run(); err != nil {
+		log.Panicf("%v packages: %v", commandName, err)
 	}
 }
