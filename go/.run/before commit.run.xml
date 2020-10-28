@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="before commit" type="GoApplicationRunConfiguration"
+                   factoryName="Go Application">
+        <module name="go"/>
+        <working_directory value="$PROJECT_DIR$"/>
+        <kind value="PACKAGE"/>
+        <filePath value="$PROJECT_DIR$/before_commit.go"/>
+        <package value="github.com/CNife/leetcode"/>
+        <directory value="$PROJECT_DIR$"/>
+        <method v="2"/>
+    </configuration>
+</component>
