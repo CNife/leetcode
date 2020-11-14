@@ -18,7 +18,7 @@ func main() {
 func collectPackages() []string {
 	dirs, err := ioutil.ReadDir(".")
 	if err != nil {
-		log.Panicf("list current director: %v", err)
+		log.Panicf("list current directory: %v", err)
 	}
 	var result []string
 	for _, dir := range dirs {
