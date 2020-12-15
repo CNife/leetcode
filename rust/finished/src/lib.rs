@@ -115,6 +115,7 @@ pub mod minimum_increment_to_make_array_unique;
 pub mod minimum_k_numbers;
 pub mod minimum_moves_to_equal_array_elements;
 pub mod minimum_path_sum;
+pub mod monotone_increasing_digits;
 pub mod moving_count_of_robot;
 pub mod multiply_strings;
 pub mod n_queens;
