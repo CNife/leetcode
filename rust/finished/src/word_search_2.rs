@@ -92,7 +92,7 @@ fn init_context(board: Vec<Vec<char>>) -> Context {
 
 #[test]
 fn test() {
-    use crate::utils::{assert_same_set, v};
+    use utils::{assert_same_set, vec_of};
 
     let cases = vec![
         (
@@ -3431,6 +3431,6 @@ fn test() {
         ),
     ];
     for (board, word, expected) in cases {
-        assert_same_set(find_words(board, v(word)), expected);
+        assert_same_set(find_words(board, vec_of(word)), expected);
     }
 }

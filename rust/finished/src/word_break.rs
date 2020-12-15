@@ -37,8 +37,6 @@ pub fn word_break(input: String, dict: Vec<String>) -> bool {
 
 #[test]
 fn test() {
-    use crate::utils::v;
-
     let cases = vec![
         ("leetcode", vec!["leet", "code"], true),
         ("applepenapple", vec!["apple", "pen"], true),
@@ -49,6 +47,6 @@ fn test() {
         ),
     ];
     for (word, dict, expected) in cases {
-        assert_eq!(word_break(word.into(), v(dict)), expected);
+        assert_eq!(word_break(word.into(), utils::vec_of(dict)), expected);
     }
 }

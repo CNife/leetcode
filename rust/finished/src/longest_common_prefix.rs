@@ -24,13 +24,13 @@ pub fn longest_common_prefix(strings: Vec<String>) -> String {
 
 #[test]
 fn test() {
-    use crate::utils::v;
+    use utils::vec_of;
 
     let cases = vec![
         (vec!["flower", "flow", "flight"], "fl"),
         (vec!["dog", "racecar", "car"], ""),
     ];
     for (strings, expect) in cases {
-        assert_eq!(longest_common_prefix(v(strings)), expect);
+        assert_eq!(longest_common_prefix(vec_of(strings)), expect);
     }
 }

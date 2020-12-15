@@ -16,7 +16,7 @@ pub fn single_numbers(nums: Vec<i32>) -> Vec<i32> {
 
 #[test]
 fn test() {
-    use crate::utils::assert_same_set;
+    use utils::assert_same_set;
 
     let cases = vec![
         (vec![4, 1, 4, 6], vec![6, 1]),

@@ -11,7 +11,7 @@ pub fn longest_word(words: Vec<String>) -> String {
 
 #[test]
 fn test() {
-    use crate::utils::v;
+    use utils::vec_of;
 
     let cases = vec![
         (vec!["w", "wo", "wor", "worl", "world"], "world"),
@@ -21,6 +21,6 @@ fn test() {
         ),
     ];
     for (words, expect) in cases {
-        assert_eq!(longest_word(v(words)), expect);
+        assert_eq!(longest_word(vec_of(words)), expect);
     }
 }

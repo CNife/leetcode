@@ -22,7 +22,7 @@ pub fn get_least_numbers(array: Vec<i32>, k: i32) -> Vec<i32> {
 
 #[test]
 fn test() {
-    use crate::utils::assert_same_set;
+    use utils::assert_same_set;
 
     let cases = vec![
         (vec![3, 2, 1], 2, vec![1, 2]),

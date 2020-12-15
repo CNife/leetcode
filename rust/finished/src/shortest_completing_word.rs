@@ -27,7 +27,7 @@ fn string_id(string: &str) -> [u8; 26] {
 
 #[test]
 fn test() {
-    use crate::utils::v;
+    use utils::vec_of;
 
     let cases = vec![
         (
@@ -39,7 +39,7 @@ fn test() {
     ];
     for (license_plate, words, expect) in cases {
         assert_eq!(
-            shortest_completing_word(license_plate.into(), v(words)),
+            shortest_completing_word(license_plate.into(), vec_of(words)),
             expect
         );
     }

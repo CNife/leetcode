@@ -31,7 +31,7 @@ fn backtrace(
 
 #[test]
 fn test() {
-    use crate::utils::assert_same_set;
+    use utils::assert_same_set;
 
     let tests = vec![
         (

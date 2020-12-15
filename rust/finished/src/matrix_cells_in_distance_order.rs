@@ -18,7 +18,7 @@ pub fn all_cells_dist_order(r: i32, c: i32, r0: i32, c0: i32) -> Vec<Vec<i32>> {
 
 #[test]
 fn test() {
-    use crate::utils::assert_same_set;
+    use utils::assert_same_set;
 
     let tests = vec![
         (1, 2, 0, 0, vec![vec![(0, 0)], vec![(0, 1)]]),

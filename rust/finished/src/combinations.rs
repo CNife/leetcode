@@ -30,7 +30,7 @@ fn backtrack(
 
 #[test]
 fn test() {
-    use crate::utils::assert_same_set;
+    use utils::assert_same_set;
 
     let cases = vec![(
         4,

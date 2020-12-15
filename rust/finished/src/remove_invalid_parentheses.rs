@@ -64,7 +64,7 @@ fn backtrack(ctx: &mut Context, index: usize, left: usize, right: usize) {
 
 #[test]
 fn test() {
-    use crate::utils::assert_same_set;
+    use utils::assert_same_set;
 
     let cases = vec![
         ("()())()", vec!["()()()", "(())()"]),

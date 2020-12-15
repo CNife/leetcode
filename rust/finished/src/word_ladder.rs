@@ -47,8 +47,6 @@ pub fn ladder_length(begin: String, end: String, words: Vec<String>) -> i32 {
 
 #[test]
 fn test() {
-    use crate::utils::v;
-
     let cases = vec![
         (
             "hit",
@@ -59,6 +57,9 @@ fn test() {
         ("hit", "cog", vec!["hot", "dot", "dog", "lot", "log"], 0),
     ];
     for (begin, end, words, expected) in cases {
-        assert_eq!(ladder_length(begin.into(), end.into(), v(words)), expected);
+        assert_eq!(
+            ladder_length(begin.into(), end.into(), utils::vec_of(words)),
+            expected
+        );
     }
 }

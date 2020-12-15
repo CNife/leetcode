@@ -57,7 +57,7 @@ impl<'a> Graph<'a> {
 
 #[test]
 fn test() {
-    use crate::utils::vv;
+    use utils::vec_of_vec_of;
 
     let cases = vec![
         (
@@ -85,6 +85,9 @@ fn test() {
         ),
     ];
     for (equations, values, queries, expected) in cases {
-        assert_eq!(calc_equation(vv(equations), values, vv(queries)), expected);
+        assert_eq!(
+            calc_equation(vec_of_vec_of(equations), values, vec_of_vec_of(queries)),
+            expected
+        );
     }
 }

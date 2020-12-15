@@ -20,7 +20,7 @@ fn backtrack(nums: &[i32], stack: &mut Vec<i32>, results: &mut Vec<Vec<i32>>) {
 
 #[test]
 fn test() {
-    use crate::utils::assert_same_set;
+    use utils::assert_same_set;
 
     let cases = vec![(
         vec![1, 2, 2],

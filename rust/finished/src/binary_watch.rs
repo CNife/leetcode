@@ -30,7 +30,7 @@ pub fn read_binary_watch(num: i32) -> Vec<String> {
 
 #[test]
 fn test() {
-    use crate::utils::assert_same_set;
+    use utils::assert_same_set;
 
     let tests = vec![(
         1,

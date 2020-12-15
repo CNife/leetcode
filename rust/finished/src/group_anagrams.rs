@@ -25,20 +25,20 @@ pub fn group_anagrams(strings: Vec<String>) -> Vec<Vec<String>> {
 
 #[test]
 fn test() {
-    use crate::utils::{assert_same_set, v};
+    use utils::{assert_same_set, vec_of};
 
     let tests = vec![(
         vec!["eat", "tea", "tan", "ate", "nat", "bat"],
         vec![vec!["ate", "eat", "tea"], vec!["nat", "tan"], vec!["bat"]],
     )];
     for (strings, want) in tests {
-        let mut output = group_anagrams(v(strings));
+        let mut output = group_anagrams(vec_of(strings));
         output.iter_mut().for_each(|vs| vs.sort_unstable());
         let want = want
             .into_iter()
             .map(|mut vs| {
                 vs.sort_unstable();
-                v(vs)
+                vec_of(vs)
             })
             .collect();
         assert_same_set(output, want);

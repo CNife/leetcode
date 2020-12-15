@@ -6,7 +6,9 @@ pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
         let another = target - num;
         match map.get(&another) {
             Some(prev_i) => return vec![*prev_i, i as i32],
-            None => { map.insert(num, i as i32); }
+            None => {
+                map.insert(num, i as i32);
+            }
         }
     }
     vec![]

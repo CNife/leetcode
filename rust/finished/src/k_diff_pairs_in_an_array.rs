@@ -1,6 +1,6 @@
 use std::collections::HashSet;
 
-fn find_pairs(nums: Vec<i32>, k: i32) -> i32 {
+pub fn find_pairs(nums: Vec<i32>, k: i32) -> i32 {
     if k < 0 {
         0
     } else {

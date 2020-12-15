@@ -59,7 +59,7 @@ fn next_right_different(nums: &[i32], mut idx: usize) -> usize {
 
 #[test]
 fn test_three_sum() {
-    use crate::utils::assert_same_set;
+    use utils::assert_same_set;
 
     let cases = vec![
         (

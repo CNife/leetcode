@@ -24,7 +24,7 @@ fn backtrace(candidates: &[i32], target: i32, stack: &mut Vec<i32>, results: &mu
 
 #[test]
 fn test() {
-    use crate::utils::assert_same_set;
+    use utils::assert_same_set;
 
     let tests = vec![
         (vec![2, 3, 6, 7], 7, vec![vec![7], vec![2, 2, 3]]),

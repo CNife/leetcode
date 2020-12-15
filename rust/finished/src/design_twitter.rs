@@ -2,15 +2,15 @@ use std::cmp::Reverse;
 use std::collections::{BTreeMap, HashMap, HashSet};
 
 #[derive(Debug, Default)]
-struct Twitter {
+pub struct Twitter {
     users: HashMap<UserId, Profile>,
     tweets: BTreeMap<Time, Tweet>,
     timer: u32,
 }
 
-type UserId = i32;
-type TweetId = i32;
-type Time = Reverse<u32>;
+pub type UserId = i32;
+pub type TweetId = i32;
+pub type Time = Reverse<u32>;
 
 #[derive(Debug, Default)]
 struct Profile {
