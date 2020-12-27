@@ -27,7 +27,7 @@ def clone_graph(node: Optional[Node]) -> Optional[Node]:
         return new
 
     result = clone_node(node)
-    print(cloned)
+    # print(cloned)
     return result
 
 
@@ -38,4 +38,4 @@ src_nodes[2].neighbors.extend([src_nodes[1], src_nodes[3]])
 src_nodes[3].neighbors.extend([src_nodes[0], src_nodes[2]])
 
 got = clone_graph(src_nodes[0])
-print(src_nodes, got)
+# print(src_nodes, got)
