@@ -2,15 +2,12 @@ package types
 
 import "strconv"
 
-// 二叉树节点
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
 	Right *TreeNode
 }
 
-// 创建新的二叉树
-// 按照值的层序遍历创建树，小于 0 的值视为空节点，空节点将在下一层中被忽略
 func NewTree(values ...int) *TreeNode {
 	if len(values) == 0 {
 		return nil
@@ -42,24 +39,22 @@ func NewTree(values ...int) *TreeNode {
 	return root
 }
 
-// 打印二叉树
 func (tree *TreeNode) String() string {
 	if tree == nil {
-		return "nil"
+		return ""
+	} else {
+		return "(" + strconv.Itoa(tree.Val) + "," + tree.Left.String() + "," + tree.Right.String() + ")"
 	}
-	return "(" + strconv.Itoa(tree.Val) + "," +
-		tree.Left.String() + "," +
-		tree.Right.String() + ")"
 }
 
-// 克隆二叉树
-func (tree *TreeNode) Clone() *TreeNode {
+func (tree *TreeNode) DeepClone() *TreeNode {
 	if tree == nil {
 		return nil
-	}
-	return &TreeNode{
-		Val:   tree.Val,
-		Left:  tree.Left.Clone(),
-		Right: tree.Right.Clone(),
+	} else {
+		return &TreeNode{
+			Val:   tree.Val,
+			Left:  tree.Left.DeepClone(),
+			Right: tree.Right.DeepClone(),
+		}
 	}
 }

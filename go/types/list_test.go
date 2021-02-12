@@ -1,47 +1,57 @@
 package types
 
 import (
-	"reflect"
+	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
 func TestNewList(t *testing.T) {
-	cases := []struct {
-		name   string
-		values []int
-		want   *ListNode
-	}{
-		{
-			name:   "empty list",
-			values: []int{},
-			want:   nil,
-		},
-		{
-			name:   "non-empty list",
-			values: []int{1, 2, 3, 4, 5},
-			want: &ListNode{
-				Val: 1,
+	assert.Equal(t, (*ListNode)(nil), NewList())
+	assert.Equal(t, &ListNode{Val: 1}, NewList(1))
+	assert.Equal(t,
+		&ListNode{
+			Val: 1,
+			Next: &ListNode{
+				Val: 2,
 				Next: &ListNode{
-					Val: 2,
+					Val: 3,
 					Next: &ListNode{
-						Val: 3,
-						Next: &ListNode{
-							Val: 4,
-							Next: &ListNode{
-								Val:  5,
-								Next: nil,
-							},
-						},
+						Val:  4,
+						Next: &ListNode{Val: 5},
 					},
 				},
 			},
 		},
+		NewList(1, 2, 3, 4, 5),
+	)
+}
+
+func TestListNode_String(t *testing.T) {
+	assert.Equal(t, "nil", NewList().String())
+	assert.Equal(t, "1", NewList(1).String())
+	assert.Equal(t, "1->2->3->4->5", NewList(1, 2, 3, 4, 5).String())
+	assert.Panics(t, func() {
+		_ = loopList().String()
+	})
+}
+
+func TestListNode_Clone(t *testing.T) {
+	assert.Equal(t, (*ListNode)(nil), NewList().Clone())
+	assert.Equal(t, NewList(1), NewList(1))
+	assert.Equal(t, NewList(1, 2, 3, 4, 5), NewList(1, 2, 3, 4, 5))
+	assert.Panics(t, func() {
+		_ = loopList().Clone()
+	})
+}
+
+func loopList() *ListNode {
+	list := &ListNode{
+		Val: 1,
+		Next: &ListNode{
+			Val: 2,
+		},
 	}
-	for _, c := range cases {
-		t.Run(c.name, func(t *testing.T) {
-			if got := NewList(c.values...); !reflect.DeepEqual(got, c.want) {
-				t.Errorf("NewList(%v) = %v, want %v", c.values, got, c.want)
-			}
-		})
-	}
+	list.Next.Next = list
+
+	return list
 }

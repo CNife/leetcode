@@ -1,61 +1,36 @@
 package types
 
 import (
-	"reflect"
+	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
 func TestNewTree(t *testing.T) {
-	cases := []struct {
-		name   string
-		values []int
-		expect *TreeNode
-	}{
-		{
-			name:   "empty tree",
-			values: []int{},
-			expect: nil,
-		},
-		{
-			name:   "non-empty tree",
-			values: []int{1, 2, 3, 4, 5},
-			expect: &TreeNode{
-				Val: 1,
-				Left: &TreeNode{
-					Val:   2,
-					Left:  &TreeNode{Val: 4},
-					Right: &TreeNode{Val: 5},
-				},
-				Right: &TreeNode{Val: 3},
+	assert.Equal(t, (*TreeNode)(nil), NewTree())
+	assert.Equal(t, &TreeNode{Val: 1}, NewTree(1))
+	assert.Equal(t,
+		&TreeNode{
+			Val:  1,
+			Left: &TreeNode{Val: 2},
+			Right: &TreeNode{
+				Val:   3,
+				Left:  &TreeNode{Val: 4},
+				Right: &TreeNode{Val: 5},
 			},
 		},
-	}
-	for _, c := range cases {
-		t.Run(c.name, func(t *testing.T) {
-			if actual := NewTree(c.values...); !reflect.DeepEqual(actual, c.expect) {
-				t.Errorf("NewTree(%v) = %v\nwant %v", c.values, actual, c.expect)
-			}
-		})
-	}
+		NewTree(1, 2, 3, -1, -1, 4, 5))
 }
 
-func TestTreeNode_DeepClone(t *testing.T) {
-	tests := []struct {
-		tree *TreeNode
-		want *TreeNode
-	}{
-		{
-			tree: nil,
-			want: nil,
-		},
-		{
-			tree: NewTree(1, 2, 3, 4, 5, -1, 6),
-			want: NewTree(1, 2, 3, 4, 5, -1, 6),
-		},
-	}
-	for _, tt := range tests {
-		if got := tt.tree.DeepClone(); !reflect.DeepEqual(got, tt.want) {
-			t.Error(tt, got)
-		}
-	}
+func TestTreeNode_String(t *testing.T) {
+	assert.Equal(t, "nil", NewTree().String())
+	assert.Equal(t, "(1,nil,nil)", NewTree(1).String())
+	assert.Equal(t,
+		"(1,(2,nil,nil),(3,(4,nil,nil),(5,nil,nil)))",
+		NewTree(1, 2, 3, -1, -1, 4, 5).String())
+}
+
+func TestTreeNode_Clone(t *testing.T) {
+	assert.Equal(t, NewTree(), NewTree())
+	assert.Equal(t, NewTree(1), NewTree(1))
+	assert.Equal(t, NewTree(1, 2, 3, -1, 4, 5), NewTree(1, 2, 3, -1, 4, 5))
 }

@@ -1,16 +1,20 @@
 package types
 
 import (
-	"bytes"
-	"fmt"
 	"strconv"
+	"strings"
 )
 
+// 单链表长度上限
+const SizeThreshold = 1000
+
+// 单链表节点
 type ListNode struct {
 	Val  int
 	Next *ListNode
 }
 
+// 创建新的单链表
 func NewList(values ...int) *ListNode {
 	var head, prev *ListNode
 	for _, value := range values {
@@ -26,31 +30,52 @@ func NewList(values ...int) *ListNode {
 	return head
 }
 
+// 打印单链表
+// 如果链表有环，将引发错误
 func (l *ListNode) String() string {
 	if l == nil {
 		return "nil"
 	}
 
-	nodes := make(map[*ListNode]struct{})
-	buffer := bytes.NewBuffer([]byte(strconv.Itoa(l.Val)))
-	for ptr := l.Next; ptr != nil; ptr = ptr.Next {
-		if _, exists := nodes[ptr]; exists {
-			buffer.WriteString(fmt.Sprintf(" <recursion at %v>", ptr))
-			break
-		} else {
-			buffer.WriteString("->")
-			buffer.WriteString(strconv.Itoa(ptr.Val))
+	ptr := l
+	var buffer strings.Builder
+	buffer.WriteString(strconv.Itoa(ptr.Val))
+	ptr = ptr.Next
+
+	var size int
+	for ptr != nil {
+		if size > SizeThreshold {
+			panic("list too long or has loop")
 		}
+
+		buffer.WriteString("->")
+		buffer.WriteString(strconv.Itoa(ptr.Val))
+
+		ptr = ptr.Next
+		size++
 	}
+
 	return buffer.String()
 }
 
+// 克隆单链表
+// 如果链表有环，将引发错误
 func (l *ListNode) Clone() *ListNode {
 	if l == nil {
 		return nil
 	}
-	return &ListNode{
-		Val:  l.Val,
-		Next: l.Next.Clone(),
+
+	head := &ListNode{Val: l.Val}
+	oldPtr, newPtr := l.Next, head
+	size := 0
+	for oldPtr != nil {
+		if size > SizeThreshold {
+			panic("list too long or has loop")
+		}
+
+		newPtr.Next = &ListNode{Val: oldPtr.Val}
+		oldPtr, newPtr = oldPtr.Next, newPtr.Next
+		size++
 	}
+	return head
 }
